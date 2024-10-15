@@ -44,7 +44,7 @@ public class UI implements UIInterface {
         System.out.println();
 
         // returns user selection
-        return integerInput(1, entries.length, prompt);;
+        return integerInput(1, entries.length, prompt);
     }
 
     public int integerInput(Integer min, Integer max, String prompt) {
