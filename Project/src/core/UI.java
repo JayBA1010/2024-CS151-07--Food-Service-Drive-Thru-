@@ -2,7 +2,7 @@ package core;
 
 import java.util.Scanner;
 
-public class UI {
+public class UI implements UIInterface {
     Scanner scanner;
 
     public UI() {
@@ -43,9 +43,8 @@ public class UI {
 
         System.out.println();
 
-        int selection = integerInput(1, entries.length, prompt);
-
-        return selection;
+        // returns user selection
+        return integerInput(1, entries.length, prompt);;
     }
 
     public int integerInput(Integer min, Integer max, String prompt) {

@@ -75,15 +75,13 @@ public class Main {
         // Simulation starts here.
 
         for (int time = 0; time < simulationLength; time++) {
-            for (KitchenStation kitchenStation : driveThrough.
-                    getKitchenStations()) {
+            for (KitchenStation kitchenStation : driveThrough.getKitchenStations()) {
                 LinkedList<Employee> employeeQueue = kitchenStation.getEmployeeQueue();
 
                 if (!employeeQueue.isEmpty()) {
                     kitchenStation.useStation(time);
 
-                    if (employeeQueue.getFirst().
-                            getTimeAtStation() == kitchenStation.getUseDuration()) {
+                    if (employeeQueue.getFirst().getTimeAtStation() == kitchenStation.getUseDuration()) {
                         employeeQueue.getFirst().changeKitchenStation(time);
                     }
                 }
