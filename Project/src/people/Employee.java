@@ -60,6 +60,7 @@ public class Employee extends Person {
             }
         }
 
+        assert kitchenStation != null;
         if (kitchenStation.getPrecedence() > this.kitchenStation.getPrecedence()) {
             timeAtStation = -1;
         } else {

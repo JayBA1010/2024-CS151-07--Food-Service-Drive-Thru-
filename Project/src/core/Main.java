@@ -79,7 +79,7 @@ public class Main {
                     getKitchenStations()) {
                 LinkedList<Employee> employeeQueue = kitchenStation.getEmployeeQueue();
 
-                if (employeeQueue.size() > 0) {
+                if (!employeeQueue.isEmpty()) {
                     kitchenStation.useStation(time);
 
                     if (employeeQueue.getFirst().
