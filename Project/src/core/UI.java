@@ -54,7 +54,7 @@ public class UI implements Formatting
         System.out.println();
 
         //User selection
-        return integerInput(1, entries.length, prompt);;
+        return integerInput(1, entries.length, prompt);
     }
 
     public int integerInput(Integer min, Integer max, String prompt)
