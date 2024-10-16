@@ -11,7 +11,7 @@
 
 
 # Contributions
-Aung Aung - Documentation 
-Jay Barrios Abarquez - Code Polisher 
-Kenneth Estrada - Designed our UML 
+Aung Aung - Documentation and Main Debugger <br/>
+Jay Barrios Abarquez - Code Polisher and Debugger <br/>
+Kenneth Estrada - Designed our UML and Debugger <br/>
 Junior Kyaw - Coded our Prototype
