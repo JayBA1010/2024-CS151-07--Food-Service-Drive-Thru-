@@ -11,7 +11,7 @@
 
 
 # Contributions
-Aung Aung - 
-Jay Barrios Abarquez - 
+Aung Aung - Documentation 
+Jay Barrios Abarquez - Code Polisher 
 Kenneth Estrada - Designed our UML 
 Junior Kyaw - Coded our Prototype
