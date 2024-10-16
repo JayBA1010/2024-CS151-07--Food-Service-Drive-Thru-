@@ -4,26 +4,18 @@ import people.Customer;
 import people.Employee;
 import stations.*;
 
-interface serveCustomer {
-    void addCustomer(Customer customer);
-
-    void addEarnings(double earnings);
-
-    void addEmployee(Employee employee);
-
-    void incrementCustomersServed();
-}
-
-public class DriveThrough implements serveCustomer {
+public class DriveThrough implements ServeCustomer
+{
     private int customersServed;
 
     private double earnings;
+    
+    private KitchenStation[] kitchenStations = new KitchenStation[6];
 
-    private final KitchenStation[] kitchenStations = new KitchenStation[6];
-
-    public DriveThrough() {
+    public DriveThrough()
+    {
         customersServed = 0;
-
+        
         earnings = 0;
 
         kitchenStations[0] = new DessertStation();
@@ -39,59 +31,72 @@ public class DriveThrough implements serveCustomer {
         kitchenStations[5] = new PreppingStation();
     }
 
-    public void addCustomer(Customer customer) {
+    public void addCustomer(Customer customer)
+    {
         getOrderingStation().getCustomerQueue().add(customer);
     }
 
-    public void addEarnings(double earnings) {
+    public void addEarnings(double earnings)
+    {
         // COULD IMPLEMENT TAX CALCULATION LATER
-
+        
         this.earnings += earnings;
     }
 
-    public void addEmployee(Employee employee) {
+    public void addEmployee(Employee employee)
+    {
         getOrderingStation().getEmployeeQueue().add(employee);
 
         employee.setDriveThrough(this);
     }
 
-    public int getCustomersServed() {
+    public int getCustomersServed()
+    {
         return customersServed;
     }
 
-    public DessertStation getDessertStation() {
+    public DessertStation getDessertStation()
+    {
         return (DessertStation) kitchenStations[0];
     }
 
-    public double getEarnings() {
+    public double getEarnings()
+    {
         return earnings;
     }
 
-    public FryingStation getFryingStation() {
+    public FryingStation getFryingStation()
+    {
         return (FryingStation) kitchenStations[1];
     }
 
-    public GrillingStation getGrillingStation() {
+    public GrillingStation getGrillingStation()
+    {
         return (GrillingStation) kitchenStations[2];
     }
 
-    public KitchenStation[] getKitchenStations() {
+    public KitchenStation[] getKitchenStations()
+    {
         return kitchenStations;
     }
 
-    public OrderingStation getOrderingStation() {
+    public OrderingStation getOrderingStation()
+    {
         return (OrderingStation) kitchenStations[3];
     }
 
-    public PickupStation getPickupStation() {
+    public PickupStation getPickupStation()
+    {
         return (PickupStation) kitchenStations[4];
     }
 
-    public PreppingStation getPreppingStation() {
+    public PreppingStation getPreppingStation()
+    {
         return (PreppingStation) kitchenStations[5];
     }
 
-    public void incrementCustomersServed() {
+    public void incrementCustomersServed()
+    {
         customersServed++;
     }
 }
