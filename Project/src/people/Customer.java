@@ -10,19 +10,19 @@ public class Customer extends Person {
 
         switch (order) {
             case "French Fries":
-                this.order = new FrenchFries();
+                this.order = new FrenchFries(5.99);
 
                 break;
             case "Fried Chicken":
-                this.order = new FriedChicken();
+                this.order = new FriedChicken(10.99);
 
                 break;
             case "Grilled Chicken":
-                this.order = new GrilledChicken();
+                this.order = new GrilledChicken(15.99);
 
                 break;
             case "Grilled Chicken Sandwich":
-                this.order = new GrilledChickenSandwich();
+                this.order = new GrilledChickenSandwich(10.99);
 
                 break;
             case "Hamburger":

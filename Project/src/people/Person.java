@@ -1,6 +1,6 @@
 package people;
 
-abstract class Person // convertible into interface
+public abstract class Person // convertible into interface
 {
     String name;
 

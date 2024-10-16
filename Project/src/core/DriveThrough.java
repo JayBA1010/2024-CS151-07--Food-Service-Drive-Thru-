@@ -4,10 +4,22 @@ import people.Customer;
 import people.Employee;
 import stations.*;
 
-public class DriveThrough {
-    private final KitchenStation[] kitchenStations = new KitchenStation[6];
+interface serveCustomer {
+    void addCustomer(Customer customer);
+
+    void addEarnings(double earnings);
+
+    void addEmployee(Employee employee);
+
+    void incrementCustomersServed();
+}
+
+public class DriveThrough implements serveCustomer {
     private int customersServed;
+
     private double earnings;
+
+    private final KitchenStation[] kitchenStations = new KitchenStation[6];
 
     public DriveThrough() {
         customersServed = 0;

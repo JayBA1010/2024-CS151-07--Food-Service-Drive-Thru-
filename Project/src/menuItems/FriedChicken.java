@@ -6,4 +6,10 @@ public class FriedChicken extends Order {
 
         getTasks().add("Frying Station");
     }
+
+    public FriedChicken(double price) {
+        super("Fried Chicken", price);
+
+        getTasks().add("Frying Station");
+    }
 }

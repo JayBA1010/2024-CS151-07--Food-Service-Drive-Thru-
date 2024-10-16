@@ -13,6 +13,16 @@ public abstract class KitchenStation {
 
     private final int useDuration;
 
+    public KitchenStation() {
+        employeeQueue = new LinkedList<Employee>();
+
+        name = "";
+
+        precedence = 0;
+
+        useDuration = 0;
+    }
+
     public KitchenStation(String name, int precedence, int useDuration) {
         employeeQueue = new LinkedList<Employee>();
 

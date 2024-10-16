@@ -6,4 +6,10 @@ public class IceCream extends Order {
 
         getTasks().add("Dessert Station");
     }
+
+    public IceCream(double price) {
+        super("Ice Cream", price);
+
+        getTasks().add("Dessert Station");
+    }
 }

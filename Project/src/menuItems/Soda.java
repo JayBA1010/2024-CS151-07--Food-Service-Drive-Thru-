@@ -6,4 +6,10 @@ public class Soda extends Order {
 
         getTasks().add("Dessert Station");
     }
+
+    public Soda(double price) {
+        super("Soda", price);
+
+        getTasks().add("Dessert Station");
+    }
 }

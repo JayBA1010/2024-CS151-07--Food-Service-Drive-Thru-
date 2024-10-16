@@ -39,6 +39,8 @@ public class Main {
 
             ui.printPadding(3);
 
+            scanner.close();
+
             String[] orders = {"French Fries", "Fried Chicken", "Grilled Chi" +
                     "cken", "Grilled Chicken Sandwich", "Hamburger", "Ice Cream", "S" +
                     "alad", "Soda"};
@@ -48,6 +50,7 @@ public class Main {
             ui.printDivider();
 
             driveThrough.addCustomer(new Customer(name, orders[index]));
+
         }
 
         int employeeCount = ui.integerInput(0, null, "Employee Count (Intege" +
@@ -64,6 +67,8 @@ public class Main {
 
             ui.printDivider();
 
+            scanner.close();
+
             driveThrough.addEmployee(new Employee(name, driveThrough));
         }
 
@@ -75,13 +80,15 @@ public class Main {
         // Simulation starts here.
 
         for (int time = 0; time < simulationLength; time++) {
-            for (KitchenStation kitchenStation : driveThrough.getKitchenStations()) {
+            for (KitchenStation kitchenStation : driveThrough.
+                    getKitchenStations()) {
                 LinkedList<Employee> employeeQueue = kitchenStation.getEmployeeQueue();
 
-                if (!employeeQueue.isEmpty()) {
+                if (employeeQueue.size() > 0) {
                     kitchenStation.useStation(time);
 
-                    if (employeeQueue.getFirst().getTimeAtStation() == kitchenStation.getUseDuration()) {
+                    if (employeeQueue.getFirst().
+                            getTimeAtStation() == kitchenStation.getUseDuration()) {
                         employeeQueue.getFirst().changeKitchenStation(time);
                     }
                 }

@@ -8,4 +8,12 @@ public class Hamburger extends Order {
 
         getTasks().add("Prepping Station");
     }
+
+    public Hamburger(double price) {
+        super("Hamburger", price);
+
+        getTasks().add("Grilling Station");
+
+        getTasks().add("Prepping Station");
+    }
 }

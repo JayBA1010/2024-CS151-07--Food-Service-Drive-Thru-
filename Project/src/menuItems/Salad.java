@@ -6,4 +6,10 @@ public class Salad extends Order {
 
         getTasks().add("Prepping Station");
     }
+
+    public Salad(double price) {
+        super("Salad", price);
+
+        getTasks().add("Prepping Station");
+    }
 }
