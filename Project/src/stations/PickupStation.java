@@ -19,16 +19,16 @@ public class PickupStation extends KitchenStation {
 
             DriveThrough driveThrough = employee.getDriveThrough();
 
-            Order order = customer.getOrder();
+//            Order order = customer.getOrder();
 
-            double price = order.getPrice();
+            double price = customer.getOrder().getPrice();
 
             driveThrough.incrementCustomersServed();
 
             driveThrough.addEarnings(price);
 
             System.out.println("(Tick " + time + ") " + employee.getName() +
-                    " (Employee) " + "has fulfilled an order of " + order.getName() +
+                    " (Employee) " + "has fulfilled an order of " + customer.getOrder().getName() +
                     " from " + customer.getName() + " (Customer) and earned $" + price
                     + ".");
         }

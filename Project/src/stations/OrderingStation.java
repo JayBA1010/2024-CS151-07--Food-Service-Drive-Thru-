@@ -30,12 +30,12 @@ public class OrderingStation extends KitchenStation {
 
             employee.setCustomer(customer);
 
-            Order order = customer.getOrder();
+//            Order order = customer.getOrder();
 
-            employee.setIterator(order.getTasks().iterator());
+            employee.setIterator(customer.getOrder().getTasks().iterator());
 
             System.out.println("(Tick " + time + ") " + employee.getName() +
-                    " (Employee) " + "has received an order of " + order.getName() +
+                    " (Employee) " + "has received an order of " + customer.getOrder().getName() +
                     " from " + customer.getName() + " (Customer).");
         }
 

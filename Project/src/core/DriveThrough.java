@@ -2,6 +2,7 @@ package core;
 
 import people.Customer;
 import people.Employee;
+import people.ServeCustomer;
 import stations.*;
 
 /**
@@ -10,16 +11,13 @@ import stations.*;
  * customers served and the earnings.
  */
 public class DriveThrough implements ServeCustomer {
-    private int customersServed;
-
-    private double earnings;
-
     private final KitchenStation[] kitchenStations = new KitchenStation[6];
+    private int customersServed;
+    private double earnings;
 
     /**
      * Constructs a DriveThrough instance with predefined kitchen stations.
      */
-
     public DriveThrough() {
         customersServed = 0;
 

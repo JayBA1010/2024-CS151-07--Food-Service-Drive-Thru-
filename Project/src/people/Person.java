@@ -3,8 +3,7 @@ package people;
 /**
  * Represents a general person with a name.
  */
-public abstract class Person
-{
+public abstract class Person {
     String name;
 
     /**
