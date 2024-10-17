@@ -10,8 +10,7 @@ public class OrderingStation extends KitchenStation {
 
     public OrderingStation() {
         super("Ordering Station", 3, 1);
-
-        customerQueue = new LinkedList<Customer>();
+        customerQueue = new LinkedList<>();
     }
 
     public LinkedList<Customer> getCustomerQueue() {

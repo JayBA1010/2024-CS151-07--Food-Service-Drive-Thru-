@@ -78,9 +78,7 @@ public class UI implements Formatting {
 
         System.out.println();
 
-        int selection = integerInput(1, entries.length, prompt);
-
-        return selection;
+        return integerInput(1, entries.length, prompt);
     }
 
     /**
