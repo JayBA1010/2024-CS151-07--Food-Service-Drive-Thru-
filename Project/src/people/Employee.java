@@ -16,7 +16,7 @@ public class Employee extends Person {
 
     private DriveThrough driveThrough;
 
-    private Iterator<String> iterator;
+    private Iterator<String> currentTask;
 
     private int timeAtStation;
 
@@ -33,7 +33,7 @@ public class Employee extends Person {
 
         this.driveThrough = driveThrough;
 
-        iterator = null;
+        currentTask = null;
 
         kitchenStation = driveThrough.getOrderingStation();
 
@@ -49,8 +49,8 @@ public class Employee extends Person {
         KitchenStation kitchenStation = null;
 
         // Move to the next station based on the iterator
-        if (iterator != null && iterator.hasNext()) {
-            kitchenStation = switch (iterator.next()) {
+        if (currentTask != null && currentTask.hasNext()) {
+            kitchenStation = switch (currentTask.next()) {
                 case "Dessert Station" -> driveThrough.getDessertStation();
                 case "Frying Station" -> driveThrough.getFryingStation();
                 case "Grilling Station" -> driveThrough.getGrillingStation();
@@ -144,7 +144,7 @@ public class Employee extends Person {
      *
      * @param iterator the iterator for station changes
      */
-    public void setIterator(Iterator<String> iterator) {
-        this.iterator = iterator;
+    public void setCurrentTask(Iterator<String> iterator) {
+        this.currentTask = iterator;
     }
 }

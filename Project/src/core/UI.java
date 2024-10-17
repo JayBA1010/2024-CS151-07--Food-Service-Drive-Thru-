@@ -67,18 +67,13 @@ public class UI implements Formatting {
     }
 
     /**
-     * Prints a selection menu and returns the selected option.
+     * Prints a selection Menu and returns the selected option.
      *
      * @param entries the options to display
-     * @param prompt  the prompt message
-     * @return the selected option
      */
-    public int printSelectionMenu(String[] entries, String prompt) {
+    public void printSelectionMenu(String[] entries) {
         printNumberedList(entries);
-
         System.out.println();
-
-        return integerInput(1, entries.length, prompt);
     }
 
     /**
@@ -116,7 +111,7 @@ public class UI implements Formatting {
                 System.out.println(".");
 
             } catch (Exception e) {
-                scanner.nextLine();  // Clear the invalid input from the buffer
+                scanner.nextLine();
                 System.out.println("Please enter a valid integer.");
             }
         }
@@ -128,4 +123,19 @@ public class UI implements Formatting {
     public String stringInput() {
         return scanner.nextLine();
     }
+
+    public double doubleInput(String prompt) {
+        while (true) {
+            try {
+                printPrompt(prompt);
+                double value = scanner.nextDouble();
+                scanner.nextLine();  // Clear buffer
+                return value;
+            } catch (Exception e) {
+                scanner.nextLine();  // Clear the invalid input
+                System.out.println("Please enter a valid number.");
+            }
+        }
+    }
+
 }
