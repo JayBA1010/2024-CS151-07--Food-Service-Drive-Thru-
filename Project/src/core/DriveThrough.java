@@ -20,10 +20,6 @@ public class DriveThrough implements ServeCustomer {
         return totalCustomersAttempted;
     }
 
-    public void setTotalCustomersAttempted(int totalCustomersAttempted) {
-        this.totalCustomersAttempted = totalCustomersAttempted;
-    }
-
     /**
      * Constructs a DriveThrough instance with predefined kitchen stations.
      */
