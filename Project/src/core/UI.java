@@ -70,7 +70,6 @@ public class UI implements Formatting {
      * Prints a selection Menu and returns the selected option.
      *
      * @param entries the options to display
-     * @return the selected option
      */
     public void printSelectionMenu(String[] entries) {
         printNumberedList(entries);
