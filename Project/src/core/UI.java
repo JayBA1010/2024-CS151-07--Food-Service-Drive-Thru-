@@ -2,29 +2,30 @@ package core;
 
 import java.util.Scanner;
 
-interface userInterface {
-    void printDivider();
-
-    void printNumberedList(String[] entries);
-
-    void printPadding(int weight);
-
-    void printPrompt(String prompt);
-
-    int printSelectionMenu(String[] entries, String prompt);
-}
-
-public class UI implements userInterface {
+/**
+ * The UI class handles user (integer) input and output for the drive-through simulation.
+ */
+public class UI implements Formatting {
     Scanner scanner;
+
+    /**
+     * Constructs a UI instance with a scanner for user input.
+     */
 
     public UI() {
         scanner = new Scanner(System.in);
     }
 
+    /**
+     * Closes the scanner in the UI class.
+     */
     public void closeScanner() {
         scanner.close();
     }
 
+    /**
+     * Prints a divider line.
+     */
     public void printDivider() {
         System.out.println();
 
@@ -34,31 +35,61 @@ public class UI implements userInterface {
         System.out.println();
     }
 
+    /**
+     * Prints a numbered list of entries.
+     *
+     * @param entries the list of entries to print
+     */
     public void printNumberedList(String[] entries) {
         for (int i = 0; i < entries.length; i++) {
             System.out.println((i + 1) + ") " + entries[i]);
         }
     }
 
+    /**
+     * Prints empty lines for padding.
+     *
+     * @param weight the number of empty lines to print
+     */
     public void printPadding(int weight) {
         for (int i = 0; i < weight; i++) {
             System.out.println();
         }
     }
 
+    /**
+     * Prints a prompt for user input.
+     *
+     * @param prompt the prompt message to print
+     */
     public void printPrompt(String prompt) {
         System.out.print(prompt + ": ");
     }
 
+    /**
+     * Prints a selection menu and returns the selected option.
+     *
+     * @param entries the options to display
+     * @param prompt  the prompt message
+     * @return the selected option
+     */
     public int printSelectionMenu(String[] entries, String prompt) {
         printNumberedList(entries);
 
         System.out.println();
 
-        int selection = integerInput(1, entries.length, prompt);
-
-        return selection;
+        //User selection
+        return integerInput(1, entries.length, prompt);
     }
+
+    /**
+     * Prompts the user for an integer input and returns the input.
+     *
+     * @param min    the minimum acceptable value
+     * @param max    the maximum acceptable value (null for no limit)
+     * @param prompt the prompt message
+     * @return the integer input
+     */
 
     public int integerInput(Integer min, Integer max, String prompt) {
         try {

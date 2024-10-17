@@ -7,7 +7,16 @@ import stations.KitchenStation;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+/**
+ * The Main class serves as the entry point for the drive-through simulation program.
+ * It manages customer and employee input, runs the simulation, and prints a summary.
+ */
 public class Main {
+
+    /**
+     * The main method that starts the drive-through simulation.
+     *
+     */
     public static void main(String[] args) {
         DriveThrough driveThrough = new DriveThrough();
 
@@ -49,6 +58,7 @@ public class Main {
 
             ui.printDivider();
 
+            // All customers start at station 1 (the ordering station)
             driveThrough.addCustomer(new Customer(name, orders[index]));
 
         }
@@ -69,6 +79,7 @@ public class Main {
 
             scanner.close();
 
+            // All employees start at station 1 (the ordering station)
             driveThrough.addEmployee(new Employee(name, driveThrough));
         }
 
@@ -80,15 +91,17 @@ public class Main {
         // Simulation starts here.
 
         for (int time = 0; time < simulationLength; time++) {
-            for (KitchenStation kitchenStation : driveThrough.
-                    getKitchenStations()) {
+            // Like a wave, it does something to a station then moves on to the next
+            for (KitchenStation kitchenStation : driveThrough.getKitchenStations()) {
+
                 LinkedList<Employee> employeeQueue = kitchenStation.getEmployeeQueue();
 
-                if (employeeQueue.size() > 0) {
+                // Checks if an employee is at the current station
+                if (!employeeQueue.isEmpty()) {
+                    // True ->
                     kitchenStation.useStation(time);
 
-                    if (employeeQueue.getFirst().
-                            getTimeAtStation() == kitchenStation.getUseDuration()) {
+                    if (employeeQueue.getFirst().getTimeAtStation() == kitchenStation.getUseDuration()) {
                         employeeQueue.getFirst().changeKitchenStation(time);
                     }
                 }
