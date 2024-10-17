@@ -50,24 +50,13 @@ public class Employee extends Person {
 
         // Move to the next station based on the iterator
         if (iterator != null && iterator.hasNext()) {
-            switch (iterator.next()) {
-                case "Dessert Station":
-                    kitchenStation = driveThrough.getDessertStation();
-
-                    break;
-                case "Frying Station":
-                    kitchenStation = driveThrough.getFryingStation();
-
-                    break;
-                case "Grilling Station":
-                    kitchenStation = driveThrough.getGrillingStation();
-
-                    break;
-                case "Prepping Station":
-                    kitchenStation = driveThrough.getPreppingStation();
-
-                    break;
-            }
+            kitchenStation = switch (iterator.next()) {
+                case "Dessert Station" -> driveThrough.getDessertStation();
+                case "Frying Station" -> driveThrough.getFryingStation();
+                case "Grilling Station" -> driveThrough.getGrillingStation();
+                case "Prepping Station" -> driveThrough.getPreppingStation();
+                default -> kitchenStation;
+            };
         } else {
             // Move between ordering and pickup stations if no other stations are available
             if (this.kitchenStation == driveThrough.getOrderingStation() || this.kitchenStation == driveThrough.getPickupStation()) {
@@ -79,22 +68,22 @@ public class Employee extends Person {
 
         // Update the time spent at the station based on precedence
         assert kitchenStation != null;
+
+        // If the station that employee will move to exists later in the wave compared to the station you just left, ensures time is correct
         if (kitchenStation.getPrecedence() > this.kitchenStation.getPrecedence()) {
             timeAtStation = -1;
         } else {
             timeAtStation = 0;
         }
 
-        // Log the movement to the new station
+        // print the movement to the new station
         System.out.println("(Tick " + time + ") " + name + " (Employee) is m" +
                 "oving to " + kitchenStation.getName() + " from " + this.
                 kitchenStation.getName() + ".");
 
         // Update the employee's station
         this.kitchenStation.getEmployeeQueue().remove(this);
-
         this.kitchenStation = kitchenStation;
-
         kitchenStation.getEmployeeQueue().add(this);
     }
 

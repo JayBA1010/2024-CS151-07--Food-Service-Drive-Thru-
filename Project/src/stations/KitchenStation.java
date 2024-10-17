@@ -13,7 +13,7 @@ public abstract class KitchenStation {
 
     private final String name;
 
-    private final int precedence;
+    private final int precedence; // Ensures ordering of stations
 
     private final int useDuration;
 

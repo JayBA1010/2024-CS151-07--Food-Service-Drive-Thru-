@@ -3,7 +3,7 @@ package core;
 import java.util.Scanner;
 
 /**
- * The UI class handles user input and output for the drive-through simulation.
+ * The UI class handles user (integer) input and output for the drive-through simulation.
  */
 public class UI implements Formatting {
     Scanner scanner;
