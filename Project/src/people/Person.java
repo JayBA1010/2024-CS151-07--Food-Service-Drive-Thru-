@@ -4,7 +4,7 @@ package people;
  * Represents a general person with a name.
  */
 public abstract class Person {
-    String name;
+    public String name;
 
     /**
      * Constructs a new Person with the given name.

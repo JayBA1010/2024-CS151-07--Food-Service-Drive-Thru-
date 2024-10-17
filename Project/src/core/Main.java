@@ -84,7 +84,7 @@ public class Main {
 
                 // Checks if an employee is at the current station
                 if (!employeeQueue.isEmpty()) {
-                    // True ->
+                    // True -> Increment timeAtStation
                     kitchenStation.useStation(time);
 
                     if (employeeQueue.getFirst().getTimeAtStation() == kitchenStation.getUseDuration()) {
