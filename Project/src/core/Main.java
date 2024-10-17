@@ -150,7 +150,12 @@ public class Main {
 
         System.out.println();
 
+        System.out.println("Total customers attempted: " + driveThrough.getTotalCustomersAttempted());
         System.out.println("Customers served: " + driveThrough.getCustomersServed());
+
+        int remaining = driveThrough.getTotalCustomersAttempted() - driveThrough.getCustomersServed();
+
+        System.out.println("Customers still waiting: " + remaining);
 
         System.out.println("Total earnings: " + driveThrough.getEarnings());
 

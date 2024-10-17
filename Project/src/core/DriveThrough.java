@@ -13,13 +13,23 @@ import stations.*;
 public class DriveThrough implements ServeCustomer {
     private final KitchenStation[] kitchenStations = new KitchenStation[6];
     private int customersServed;
+    private int totalCustomersAttempted;
     private double earnings;
+
+    public int getTotalCustomersAttempted() {
+        return totalCustomersAttempted;
+    }
+
+    public void setTotalCustomersAttempted(int totalCustomersAttempted) {
+        this.totalCustomersAttempted = totalCustomersAttempted;
+    }
 
     /**
      * Constructs a DriveThrough instance with predefined kitchen stations.
      */
     public DriveThrough() {
         customersServed = 0;
+        totalCustomersAttempted = 0;
 
         earnings = 0;
 
@@ -43,6 +53,7 @@ public class DriveThrough implements ServeCustomer {
      */
     public void addCustomer(Customer customer) {
         getOrderingStation().getCustomerQueue().add(customer);
+        totalCustomersAttempted++;
     }
 
     /**
