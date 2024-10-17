@@ -78,7 +78,6 @@ public class UI implements Formatting {
 
         System.out.println();
 
-        //User selection
         return integerInput(1, entries.length, prompt);
     }
 
@@ -92,51 +91,41 @@ public class UI implements Formatting {
      */
 
     public int integerInput(Integer min, Integer max, String prompt) {
-        try {
-            printPrompt(prompt);
-
-            int integer = scanner.nextInt();
-
-            scanner.nextLine();
-
-            while ((min != null && integer < min) || (max != null && integer >
-                    max)) {
-                System.out.println();
-
-                System.out.print("Please enter a valid integer");
-
-                if (min != null) {
-                    System.out.print(" greater than " + (min - 1));
-                }
-
-                if (min != null && max != null) {
-                    System.out.print(" and");
-                }
-
-                if (max != null) {
-                    System.out.print(" less than " + (max + 1));
-                }
-
-                System.out.println(".");
-
-                System.out.println();
-
+        while (true) {
+            try {
                 printPrompt(prompt);
 
-                integer = scanner.nextInt();
+                int integer = scanner.nextInt();
+                scanner.nextLine();  // Clear the buffer
+
+                if ((min == null || integer >= min) && (max == null || integer <= max)) {
+                    return integer;  // Valid input
+                }
+
+                // If input is out of range, display error message
+                System.out.print("Please enter a valid integer");
+                if (min != null) {
+                    System.out.print(" greater than or equal to " + min);
+                }
+                if (max != null) {
+                    if (min != null) {
+                        System.out.print(" and");
+                    }
+                    System.out.print(" less than or equal to " + max);
+                }
+                System.out.println(".");
+
+            } catch (Exception e) {
+                scanner.nextLine();  // Clear the invalid input from the buffer
+                System.out.println("Please enter a valid integer.");
             }
-
-            return integer;
-        } catch (Exception e) {
-            scanner.nextLine();
-
-            System.out.println();
-
-            System.out.println("Please enter a valid integer.");
-
-            System.out.println();
-
-            return integerInput(min, max, prompt);
         }
+    }
+
+    /**
+     * Gets string input.
+     */
+    public String stringInput() {
+        return scanner.nextLine();
     }
 }

@@ -6,7 +6,7 @@ import menuItems.*;
  * Represents a customer who places an order at the drive-through.
  */
 public class Customer extends Person {
-    Order order;
+    private Order order;
 
     /**
      * Creates a new Customer with a name and their order.

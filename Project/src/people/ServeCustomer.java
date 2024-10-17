@@ -1,9 +1,6 @@
-package core;
+package people;
 
-import people.Customer;
-import people.Employee;
-
-interface ServeCustomer {
+public interface ServeCustomer {
     void addCustomer(Customer customer);
 
     void addEarnings(double earnings);

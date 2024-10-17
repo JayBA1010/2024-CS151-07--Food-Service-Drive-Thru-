@@ -1,6 +1,5 @@
 package stations;
 
-import menuItems.Order;
 import people.Customer;
 import people.Employee;
 
@@ -11,8 +10,7 @@ public class OrderingStation extends KitchenStation {
 
     public OrderingStation() {
         super("Ordering Station", 3, 1);
-
-        customerQueue = new LinkedList<Customer>();
+        customerQueue = new LinkedList<>();
     }
 
     public LinkedList<Customer> getCustomerQueue() {
@@ -30,12 +28,12 @@ public class OrderingStation extends KitchenStation {
 
             employee.setCustomer(customer);
 
-            Order order = customer.getOrder();
+//            Order order = customer.getOrder();
 
-            employee.setIterator(order.getTasks().iterator());
+            employee.setIterator(customer.getOrder().getTasks().iterator());
 
             System.out.println("(Tick " + time + ") " + employee.getName() +
-                    " (Employee) " + "has received an order of " + order.getName() +
+                    " (Employee) " + "has received an order of " + customer.getOrder().getName() +
                     " from " + customer.getName() + " (Customer).");
         }
 

@@ -5,7 +5,6 @@ import people.Employee;
 import stations.KitchenStation;
 
 import java.util.LinkedList;
-import java.util.Scanner;
 
 /**
  * The Main class serves as the entry point for the drive-through simulation program.
@@ -15,7 +14,6 @@ public class Main {
 
     /**
      * The main method that starts the drive-through simulation.
-     *
      */
     public static void main(String[] args) {
         DriveThrough driveThrough = new DriveThrough();
@@ -23,15 +21,11 @@ public class Main {
         UI ui = new UI();
 
         ui.printDivider();
-
         System.out.println("CS 151 Project 1: Drive-through Simulation Progr" +
                 "am");
-
         System.out.println();
-
         System.out.println("By Aung Aung, Aung Khant \"Junior\" Kyaw, Jay Ba" +
                 "rrios Abarquez, and Kenneth\nEstrada");
-
         ui.printDivider();
 
         int customerCount = ui.integerInput(0, null, "Customer Count (Intege" +
@@ -42,13 +36,9 @@ public class Main {
         for (int i = 1; i <= customerCount; i++) {
             ui.printPrompt("Customer " + i + "'s Name (String)");
 
-            Scanner scanner = new Scanner(System.in);
-
-            String name = scanner.nextLine();
+            String name = ui.stringInput();
 
             ui.printPadding(3);
-
-            scanner.close();
 
             String[] orders = {"French Fries", "Fried Chicken", "Grilled Chi" +
                     "cken", "Grilled Chicken Sandwich", "Hamburger", "Ice Cream", "S" +
@@ -71,13 +61,9 @@ public class Main {
         for (int i = 1; i <= employeeCount; i++) {
             ui.printPrompt("Employee " + i + "'s Name (String)");
 
-            Scanner scanner = new Scanner(System.in);
-
-            String name = scanner.nextLine().strip();
+            String name = ui.stringInput();
 
             ui.printDivider();
-
-            scanner.close();
 
             // All employees start at station 1 (the ordering station)
             driveThrough.addEmployee(new Employee(name, driveThrough));
@@ -98,7 +84,7 @@ public class Main {
 
                 // Checks if an employee is at the current station
                 if (!employeeQueue.isEmpty()) {
-                    // True ->
+                    // True -> Increment timeAtStation
                     kitchenStation.useStation(time);
 
                     if (employeeQueue.getFirst().getTimeAtStation() == kitchenStation.getUseDuration()) {
@@ -106,6 +92,7 @@ public class Main {
                     }
                 }
             }
+            ui.printDivider();
         }
 
         ui.printPadding(3);
