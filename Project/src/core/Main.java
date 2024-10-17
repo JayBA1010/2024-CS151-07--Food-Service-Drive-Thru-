@@ -5,7 +5,6 @@ import people.Employee;
 import stations.KitchenStation;
 
 import java.util.LinkedList;
-import java.util.Scanner;
 
 /**
  * The Main class serves as the entry point for the drive-through simulation program.
