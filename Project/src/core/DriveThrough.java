@@ -4,18 +4,25 @@ import people.Customer;
 import people.Employee;
 import stations.*;
 
-public class DriveThrough implements ServeCustomer
-{
+/**
+ * The DriveThrough class simulates the operations of a drive-through restaurant.
+ * It manages customers, employees, and kitchen stations, tracking the number of
+ * customers served and the earnings.
+ */
+public class DriveThrough implements ServeCustomer {
     private int customersServed;
 
     private double earnings;
-    
-    private KitchenStation[] kitchenStations = new KitchenStation[6];
 
-    public DriveThrough()
-    {
+    private final KitchenStation[] kitchenStations = new KitchenStation[6];
+
+    /**
+     * Constructs a DriveThrough instance with predefined kitchen stations.
+     */
+
+    public DriveThrough() {
         customersServed = 0;
-        
+
         earnings = 0;
 
         kitchenStations[0] = new DessertStation();
@@ -31,72 +38,122 @@ public class DriveThrough implements ServeCustomer
         kitchenStations[5] = new PreppingStation();
     }
 
-    public void addCustomer(Customer customer)
-    {
+    /**
+     * Adds a customer to the ordering station's queue.
+     *
+     * @param customer the customer to add
+     */
+    public void addCustomer(Customer customer) {
         getOrderingStation().getCustomerQueue().add(customer);
     }
 
-    public void addEarnings(double earnings)
-    {
+    /**
+     * Adds earnings to the total earnings.
+     *
+     * @param earnings the earnings to add
+     */
+    public void addEarnings(double earnings) {
         // COULD IMPLEMENT TAX CALCULATION LATER
-        
+
         this.earnings += earnings;
     }
 
-    public void addEmployee(Employee employee)
-    {
+    /**
+     * Adds an employee to the ordering station's queue and sets the employee's drive-through.
+     *
+     * @param employee the employee to add
+     */
+    public void addEmployee(Employee employee) {
         getOrderingStation().getEmployeeQueue().add(employee);
 
         employee.setDriveThrough(this);
     }
 
-    public int getCustomersServed()
-    {
+    /**
+     * Returns the total number of customers served.
+     *
+     * @return the number of customers served
+     */
+    public int getCustomersServed() {
         return customersServed;
     }
 
-    public DessertStation getDessertStation()
-    {
+    /**
+     * Returns the dessert station.
+     *
+     * @return the dessert station
+     */
+    public DessertStation getDessertStation() {
         return (DessertStation) kitchenStations[0];
     }
 
-    public double getEarnings()
-    {
+    /**
+     * Returns the total earnings.
+     *
+     * @return the total earnings
+     */
+    public double getEarnings() {
         return earnings;
     }
 
-    public FryingStation getFryingStation()
-    {
+    /**
+     * Returns the frying station.
+     *
+     * @return the frying station
+     */
+    public FryingStation getFryingStation() {
         return (FryingStation) kitchenStations[1];
     }
 
-    public GrillingStation getGrillingStation()
-    {
+    /**
+     * Returns the grilling station.
+     *
+     * @return the grilling station
+     */
+    public GrillingStation getGrillingStation() {
         return (GrillingStation) kitchenStations[2];
     }
 
-    public KitchenStation[] getKitchenStations()
-    {
+    /**
+     * Returns all the kitchen stations.
+     *
+     * @return an array of kitchen stations
+     */
+    public KitchenStation[] getKitchenStations() {
         return kitchenStations;
     }
 
-    public OrderingStation getOrderingStation()
-    {
+    /**
+     * Returns the ordering station.
+     *
+     * @return the ordering station
+     */
+    public OrderingStation getOrderingStation() {
         return (OrderingStation) kitchenStations[3];
     }
 
-    public PickupStation getPickupStation()
-    {
+    /**
+     * Returns the pickup station.
+     *
+     * @return the pickup station
+     */
+    public PickupStation getPickupStation() {
         return (PickupStation) kitchenStations[4];
     }
 
-    public PreppingStation getPreppingStation()
-    {
+    /**
+     * Returns the prepping station.
+     *
+     * @return the prepping station
+     */
+    public PreppingStation getPreppingStation() {
         return (PreppingStation) kitchenStations[5];
     }
 
-    public void incrementCustomersServed()
-    {
+    /**
+     * Increments the number of customers served.
+     */
+    public void incrementCustomersServed() {
         customersServed++;
     }
 }
