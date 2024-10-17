@@ -1,6 +1,5 @@
 package core;
 
-import menuItems.Menu;
 import people.Customer;
 import people.Employee;
 import people.ServeCustomer;
