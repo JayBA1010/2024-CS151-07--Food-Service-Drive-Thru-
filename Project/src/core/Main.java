@@ -1,5 +1,6 @@
 package core;
 
+import menuItems.Menu;
 import people.Customer;
 import people.Employee;
 import stations.KitchenStation;
@@ -20,6 +21,8 @@ public class Main {
 
         UI ui = new UI();
 
+        // Contributors
+
         ui.printDivider();
         System.out.println("CS 151 Project 1: Drive-through Simulation Progr" +
                 "am");
@@ -28,8 +31,56 @@ public class Main {
                 "rrios Abarquez, and Kenneth\nEstrada");
         ui.printDivider();
 
-        int customerCount = ui.integerInput(0, null, "Customer Count (Intege" +
-                "r)");
+        // Start of Program
+
+        String[] menuItems = {"French Fries", "Fried Chicken", "Grilled Chicken", "Grilled Chicken Sandwich", "Hamburger", "Ice Cream", "Salad", "Soda"};
+
+        boolean settingPrices = true;
+        while (settingPrices) {
+            // Show the menu
+            ui.printSelectionMenu(menuItems);
+            int choice = ui.integerInput(0, menuItems.length, "Select an item to set the price (0 to move to the next step)");
+
+            if (choice == 0) {
+                // Exit the price setting loop
+                settingPrices = false;
+            } else {
+                // Set price for the selected item
+                String selectedItem = menuItems[choice - 1];  // Adjust for 0-based index
+                double price = ui.doubleInput("Set price for " + selectedItem);
+
+                switch (selectedItem) {
+                    case "French Fries":
+                        Menu.updateFrenchFriesPrice(price);
+                        break;
+                    case "Fried Chicken":
+                        Menu.updateFriedChickenPrice(price);
+                        break;
+                    case "Grilled Chicken":
+                        Menu.updateGrilledChickenPrice(price);
+                        break;
+                    case "Grilled Chicken Sandwich":
+                        Menu.updateGrilledChickenSandwichPrice(price);
+                        break;
+                    case "Hamburger":
+                        Menu.updateHamburgerPrice(price);
+                        break;
+                    case "Ice Cream":
+                        Menu.updateIceCreamPrice(price);
+                        break;
+                    case "Salad":
+                        Menu.updateSaladPrice(price);
+                        break;
+                    case "Soda":
+                        Menu.updateSodaPrice(price);
+                        break;
+                }
+
+                ui.printDivider();
+            }
+        }
+
+        int customerCount = ui.integerInput(0, null, "Customer Count (Integer)");
 
         ui.printDivider();
 
@@ -40,21 +91,20 @@ public class Main {
 
             ui.printPadding(3);
 
-            String[] orders = {"French Fries", "Fried Chicken", "Grilled Chi" +
-                    "cken", "Grilled Chicken Sandwich", "Hamburger", "Ice Cream", "S" +
-                    "alad", "Soda"};
+            String[] orders = {"French Fries", "Fried Chicken", "Grilled Chicken", "Grilled Chicken Sandwich", "Hamburger", "Ice Cream", "Salad", "Soda"};
 
-            int index = ui.printSelectionMenu(orders, "Customer " + i + "'s Order") - 1;
+            ui.printSelectionMenu(orders);
+            int index = ui.integerInput(1, orders.length - 1, "Customer " + i + "'s Order");
+            String selectedItem = menuItems[index - 1];
+            System.out.println(name + " will order: " + selectedItem);
 
             ui.printDivider();
 
-            // All customers start at station 1 (the ordering station)
-            driveThrough.addCustomer(new Customer(name, orders[index]));
+            driveThrough.addCustomer(new Customer(name, orders[index - 1]));
 
         }
 
-        int employeeCount = ui.integerInput(0, null, "Employee Count (Intege" +
-                "r)");
+        int employeeCount = ui.integerInput(0, null, "Employee Count (Integer)");
 
         ui.printDivider();
 
@@ -69,8 +119,7 @@ public class Main {
             driveThrough.addEmployee(new Employee(name, driveThrough));
         }
 
-        int simulationLength = ui.integerInput(0, null, "Simulation Length (" +
-                "Integer)");
+        int simulationLength = ui.integerInput(0, null, "Simulation Length (Integer)");
 
         ui.printDivider();
 

@@ -1,5 +1,6 @@
 package core;
 
+import menuItems.Menu;
 import people.Customer;
 import people.Employee;
 import people.ServeCustomer;
@@ -14,6 +15,7 @@ public class DriveThrough implements ServeCustomer {
     private final KitchenStation[] kitchenStations = new KitchenStation[6];
     private int customersServed;
     private double earnings;
+    private Menu menu;
 
     /**
      * Constructs a DriveThrough instance with predefined kitchen stations.

@@ -9,5 +9,5 @@ interface Formatting {
 
     void printPrompt(String prompt);
 
-    int printSelectionMenu(String[] entries, String prompt);
+    void printSelectionMenu(String[] entries);
 }
