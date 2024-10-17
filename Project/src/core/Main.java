@@ -7,7 +7,16 @@ import stations.KitchenStation;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+/**
+ * The Main class serves as the entry point for the drive-through simulation program.
+ * It manages customer and employee input, runs the simulation, and prints a summary.
+ */
 public class Main {
+
+    /**
+     * The main method that starts the drive-through simulation.
+     *
+     */
     public static void main(String[] args) {
         DriveThrough driveThrough = new DriveThrough();
 
@@ -84,7 +93,7 @@ public class Main {
                     getKitchenStations()) {
                 LinkedList<Employee> employeeQueue = kitchenStation.getEmployeeQueue();
 
-                if (employeeQueue.size() > 0) {
+                if (!employeeQueue.isEmpty()) {
                     kitchenStation.useStation(time);
 
                     if (employeeQueue.getFirst().

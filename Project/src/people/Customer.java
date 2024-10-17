@@ -2,9 +2,18 @@ package people;
 
 import menuItems.*;
 
+/**
+ * Represents a customer who places an order at the drive-through.
+ */
 public class Customer extends Person {
     Order order;
 
+    /**
+     * Creates a new Customer with a name and their order.
+     *
+     * @param name  the name of the customer
+     * @param order the name of the order
+     */
     public Customer(String name, String order) {
         super(name);
 
@@ -44,6 +53,11 @@ public class Customer extends Person {
         }
     }
 
+    /**
+     * Gets the order placed by the customer.
+     *
+     * @return the customer's order
+     */
     public Order getOrder() {
         return order;
     }

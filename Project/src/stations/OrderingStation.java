@@ -23,7 +23,7 @@ public class OrderingStation extends KitchenStation {
     public void useStation(int time) {
         Employee employee = getEmployeeQueue().getFirst();
 
-        if (getCustomerQueue().size() > 0 && employee.getTimeAtStation() == 0) {
+        if (!getCustomerQueue().isEmpty() && employee.getTimeAtStation() == 0) {
             Customer customer = getCustomerQueue().getFirst();
 
             getCustomerQueue().removeFirst();
