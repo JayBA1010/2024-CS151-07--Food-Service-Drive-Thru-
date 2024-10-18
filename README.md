@@ -10,11 +10,8 @@ Employees: Represents an employee that handles customers and moves between diffe
 Kitchen Stations: Represents a station where employees work, including the name, precedence, and a specific duration of use <br/>
 
 # Installation Instructions
+How to run the code:
 Compile the Java Files (In Windows)
-=======
-How to run the code
-
-Compile the Java Files
 
 [Run in cmd on src folder]
 for /r %f in (*.java) do javac -d "../bin" "%f"
@@ -22,9 +19,6 @@ for /r %f in (*.java) do javac -d "../bin" "%f"
 Now the source code should be compiled as class files in a bin folder contained in the parent folder of src
 
 # Usage
-Run the Program from .class Files
-=======
-
 Run the Program from .class Files
 
 [Run in cmd on bin folder]
