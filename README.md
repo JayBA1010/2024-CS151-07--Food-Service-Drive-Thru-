@@ -11,6 +11,10 @@ Kitchen Stations: Represents a station where employees work, including the name,
 
 # Installation Instructions
 Compile the Java Files (In Windows)
+=======
+How to run the code
+
+1. Compile the Java Files
 
 [Run in cmd on src folder]
 for /r %f in (*.java) do javac -d "../bin" "%f"
@@ -19,6 +23,9 @@ Now the source code should be compiled as class files in a bin folder contained 
 
 # Usage
 Run the Program from .class Files
+=======
+
+2. Run the Program from .class Files
 
 [Run in cmd on bin folder]
 java -cp ../bin core.Main
@@ -41,3 +48,8 @@ Aung Aung - Documentation and Main Debugger <br/>
 Jay Barrios Abarquez - Code Polisher and Debugger <br/>
 Kenneth Estrada - Designed our UML and Debugger <br/>
 Junior Kyaw - Coded our Prototype
+=======
+
+2a. Run the JAR File
+
+java -jar MyProgram.jar
