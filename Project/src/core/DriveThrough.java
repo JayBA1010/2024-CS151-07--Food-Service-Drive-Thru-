@@ -52,9 +52,7 @@ public class DriveThrough implements ServeCustomer {
         return totalCustomersAttempted;
     }
 
-    public void setTotalCustomersAttempted(int totalCustomersAttempted) {
-        this.totalCustomersAttempted = totalCustomersAttempted;
-    }
+
 
     /**
      * Adds a customer to the ordering station's queue.
@@ -208,5 +206,9 @@ public class DriveThrough implements ServeCustomer {
      */
     public PreppingStation getPreppingStation() {
         return (PreppingStation) kitchenStations[5];
+    }
+
+    public void setTotalCustomersAttempted(int totalCustomersAttempted) {
+        this.totalCustomersAttempted = totalCustomersAttempted;
     }
 }
