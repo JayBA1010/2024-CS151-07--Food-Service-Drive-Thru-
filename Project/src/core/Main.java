@@ -19,8 +19,6 @@ public class Main {
 
     static UI ui = new UI();
 
-    static ArrayList<Employee> employees = new ArrayList<Employee>();
-
     /**
      * The main method that starts the drive-through simulation.
      */
