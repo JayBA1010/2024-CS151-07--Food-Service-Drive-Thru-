@@ -30,7 +30,6 @@ Run the Program from .class Files
 [Run in cmd on bin folder]
 java -cp ../bin core.Main
 
-
 You should see
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -48,8 +47,3 @@ Aung Aung - Documentation and Main Debugger <br/>
 Jay Barrios Abarquez - Code Polisher and Debugger <br/>
 Kenneth Estrada - Designed our UML and Debugger <br/>
 Junior Kyaw - Coded our Prototype
-=======
-
-2a. Run the JAR File
-
-java -jar MyProgram.jar
