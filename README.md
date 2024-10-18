@@ -1,3 +1,17 @@
+# Overview
+The DriveThrough class simulates the operations of a drive-through restaurant.
+ * It manages customers, employees, and kitchen stations, tracking the number of
+ * customers served and the earnings.
+
+# Design 
+(Major Class summaries) <br/>
+Customers: Represents a customer who places an order at the drive-through <br/>
+Employees: Represents an employee that handles customers and moves between different kitchen stations. <br/>
+Kitchen Stations: Represents a station where employees work, including the name, precedence, and a specific duration of use <br/>
+
+# Installation Instructions
+Compile the Java Files (In Windows)
+=======
 How to run the code
 
 1. Compile the Java Files
@@ -7,6 +21,9 @@ for /r %f in (*.java) do javac -d "../bin" "%f"
 
 Now the source code should be compiled as class files in a bin folder contained in the parent folder of src
 
+# Usage
+Run the Program from .class Files
+=======
 
 2. Run the Program from .class Files
 
@@ -26,6 +43,12 @@ Estrada
 
 Customer Count (Integer):
 
+# Contributions
+Aung Aung - Documentation and Main Debugger <br/>
+Jay Barrios Abarquez - Code Polisher and Debugger <br/>
+Kenneth Estrada - Designed our UML and Debugger <br/>
+Junior Kyaw - Coded our Prototype
+=======
 
 2a. Run the JAR File
 
