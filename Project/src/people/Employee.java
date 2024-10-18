@@ -14,9 +14,7 @@ public class Employee extends Person {
 
     private Customer customer;
 
-    private DriveThrough driveThrough;
-
-    private Iterator<String> iterator;
+    private Iterator<String> currentTask;
 
     private int timeAtStation;
 
@@ -26,14 +24,12 @@ public class Employee extends Person {
      * @param name         the name of the employee
      * @param driveThrough the drive-through system where the employee works
      */
-    public Employee(String name, DriveThrough driveThrough) {
-        super(name);
+    public Employee(DriveThrough driveThrough, String name) {
+        super(driveThrough, name);
 
         customer = null;
 
-        this.driveThrough = driveThrough;
-
-        iterator = null;
+        currentTask = null;
 
         kitchenStation = driveThrough.getOrderingStation();
 
@@ -45,12 +41,12 @@ public class Employee extends Person {
      *
      * @param time the current time tick in the simulation
      */
-    public void changeKitchenStation(int time) {
+    public void changeKitchenStation(int time) { // COUNTS TOWARDS 5 METHOD REQUIREMENT
         KitchenStation kitchenStation = null;
 
         // Move to the next station based on the iterator
-        if (iterator != null && iterator.hasNext()) {
-            kitchenStation = switch (iterator.next()) {
+        if (currentTask != null && currentTask.hasNext()) {
+            kitchenStation = switch (currentTask.next()) {
                 case "Dessert Station" -> driveThrough.getDessertStation();
                 case "Frying Station" -> driveThrough.getFryingStation();
                 case "Grilling Station" -> driveThrough.getGrillingStation();
@@ -69,12 +65,7 @@ public class Employee extends Person {
         // Update the time spent at the station based on precedence
         assert kitchenStation != null;
 
-        // If the station that employee will move to exists later in the wave compared to the station you just left, ensures time is correct
-        if (kitchenStation.getPrecedence() > this.kitchenStation.getPrecedence()) {
-            timeAtStation = -1;
-        } else {
-            timeAtStation = 0;
-        }
+        checkPrecedence(kitchenStation);
 
         // print the movement to the new station
         System.out.println("(Tick " + time + ") " + name + " (Employee) is m" +
@@ -85,6 +76,62 @@ public class Employee extends Person {
         this.kitchenStation.getEmployeeQueue().remove(this);
         this.kitchenStation = kitchenStation;
         kitchenStation.getEmployeeQueue().add(this);
+    }
+
+    /**
+     * Gets the time spent at the current station.
+     *
+     * @return the time at the station
+     */
+    public int getTimeAtStation() {
+        return timeAtStation;
+    }
+
+    /**
+     * Increments the time the employee has spent at the current station.
+     */
+    public void incrementTimeAtStation() { // COUNTS TOWARDS 5 METHOD REQUIREMENT
+        timeAtStation++;
+    }
+
+    public void processOrder(int time) // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    {
+        customer = driveThrough.getOrderingStation().getCustomerQueue().getFirst();
+
+        driveThrough.getOrderingStation().getCustomerQueue().removeFirst();
+
+//            Order order = customer.getOrder();
+
+        currentTask = customer.getOrder().getTasks().iterator();
+
+        System.out.println("(Tick " + time + ") " + name +
+                " (Employee) " + "has received an order of " + customer.getOrder().getName() +
+                " from " + customer.getName() + " (Customer).");
+    }
+
+    public void fulfillOrder(int time) // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    {
+//            Order order = customer.getOrder();
+            double price = customer.getOrder().getPrice();
+
+            driveThrough.incrementCustomersServed();
+
+            driveThrough.addEarnings(price);
+
+            System.out.println("(Tick " + time + ") " + name +
+                    " (Employee) " + "has fulfilled an order of " + customer.getOrder().getName() +
+                    " from " + customer.getName() + " (Customer) and earned $" + price
+                    + ".");
+    }
+
+    public void checkPrecedence(KitchenStation kitchenStation) // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    {
+        // If the station that employee will move to exists later in the wave compared to the station you just left, ensures time is correct
+        if (kitchenStation.getPrecedence() > this.kitchenStation.getPrecedence()) {
+            timeAtStation = -1;
+        } else {
+            timeAtStation = 0;
+        }
     }
 
     /**
@@ -105,38 +152,20 @@ public class Employee extends Person {
         this.customer = customer;
     }
 
-    /**
-     * Gets the drive-through system the employee is working in.
-     *
-     * @return the drive-through system
-     */
-    public DriveThrough getDriveThrough() {
-        return driveThrough;
+    public KitchenStation getKitchenStation() {
+        return kitchenStation;
     }
 
-    /**
-     * Sets the drive-through system for the employee.
-     *
-     * @param driveThrough the drive-through system to set
-     */
-    public void setDriveThrough(DriveThrough driveThrough) {
-        this.driveThrough = driveThrough;
+    public void setKitchenStation(KitchenStation kitchenStation) {
+        this.kitchenStation = kitchenStation;
     }
 
-    /**
-     * Gets the time spent at the current station.
-     *
-     * @return the time at the station
-     */
-    public int getTimeAtStation() {
-        return timeAtStation;
+    public Iterator<String> getCurrentTask() {
+        return currentTask;
     }
 
-    /**
-     * Increments the time the employee has spent at the current station.
-     */
-    public void incrementTimeAtStation() {
-        timeAtStation++;
+    public void setTimeAtStation(int timeAtStation) {
+        this.timeAtStation = timeAtStation;
     }
 
     /**
@@ -144,7 +173,7 @@ public class Employee extends Person {
      *
      * @param iterator the iterator for station changes
      */
-    public void setIterator(Iterator<String> iterator) {
-        this.iterator = iterator;
+    public void setCurrentTask(Iterator<String> iterator) {
+        this.currentTask = iterator;
     }
 }

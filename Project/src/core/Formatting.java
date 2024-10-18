@@ -8,6 +8,4 @@ interface Formatting {
     void printPadding(int weight);
 
     void printPrompt(String prompt);
-
-    int printSelectionMenu(String[] entries, String prompt);
 }

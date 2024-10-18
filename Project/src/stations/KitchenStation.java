@@ -9,13 +9,17 @@ import java.util.LinkedList;
  * Each station has a name, precedence, and a specific duration of use.
  */
 public abstract class KitchenStation {
-    private final LinkedList<Employee> employeeQueue;
+    private LinkedList<Employee> employeeQueue;
 
     private final String name;
 
     private final int precedence; // Ensures ordering of stations
 
     private final int useDuration;
+
+    private boolean isCleaned;
+
+    private boolean isPrepped;
 
     /**
      * Default constructor for KitchenStation.
@@ -29,6 +33,10 @@ public abstract class KitchenStation {
         precedence = 0;
 
         useDuration = 0;
+
+        isCleaned = false;
+
+        isPrepped = false;
     }
 
     /**
@@ -84,23 +92,65 @@ public abstract class KitchenStation {
         return useDuration;
     }
 
+    public boolean hasEmployee() // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    {
+        return !employeeQueue.isEmpty();
+    }
+
     /**
      * Simulates an employee using the station at a specific time.
      * The employee's time spent at the station is incremented and displayed.
      *
      * @param time the current time tick
      */
-    public void useStation(int time) {
+    public void useStation(int time) { // COUNTS TOWARDS 5 METHOD REQUIREMENT
         Employee employee = employeeQueue.getFirst();
 
         employee.incrementTimeAtStation();
 
-        int timeAtStation = employee.getTimeAtStation();
-
-        if (timeAtStation > 0) {
-            System.out.println("(Tick " + time + ") " + employee.getName() +
-                    " (Employee) " + "has been working at " + name + " for " +
-                    timeAtStation + " tick" + (timeAtStation == 1 ? "" : "s") + ".");
+        if (employee.getTimeAtStation() > 0) {
+            logAction(employee, time);
         }
+    }
+
+    public void logAction(Employee employee, int time) // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    {
+        System.out.println("(Tick " + time + ") " + employee.getName() +
+        " (Employee) " + "has been working at " + name + " for " +
+        employee.getTimeAtStation() + " tick" + (employee.getTimeAtStation() == 1 ? "" : "s") + ".");
+    }
+
+    public void  logCleaning() // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    {
+        System.out.println(name + " is being cleaned.");
+
+        isCleaned = true;
+    }
+
+    public void logPrepping() // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    {
+        System.out.println(name + " is being prepped.");
+
+        isPrepped = true;
+    }
+
+    public boolean getIsCleaned()
+    {
+        return isCleaned;
+    }
+
+    public boolean getIsPrepped()
+    {
+        return isPrepped;
+    }
+
+    public void setIsCleaned(boolean setting)
+    {
+        isCleaned = setting;
+    }
+
+    public void setIsPrepped(boolean setting)
+    {
+        isPrepped = setting;
     }
 }

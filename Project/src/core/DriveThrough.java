@@ -1,8 +1,7 @@
 package core;
 
-import people.Customer;
-import people.Employee;
-import people.ServeCustomer;
+import menuItems.Menu;
+import people.*;
 import stations.*;
 
 /**
@@ -11,15 +10,25 @@ import stations.*;
  * customers served and the earnings.
  */
 public class DriveThrough implements ServeCustomer {
+    
+    private Manager manager;
     private final KitchenStation[] kitchenStations = new KitchenStation[6];
     private int customersServed;
+    private int totalCustomersAttempted;
     private double earnings;
+    private Menu menu;
+
+    public int getTotalCustomersAttempted() {
+        return totalCustomersAttempted;
+    }
 
     /**
      * Constructs a DriveThrough instance with predefined kitchen stations.
      */
     public DriveThrough() {
         customersServed = 0;
+
+        totalCustomersAttempted = 0;
 
         earnings = 0;
 
@@ -34,6 +43,10 @@ public class DriveThrough implements ServeCustomer {
         kitchenStations[4] = new PickupStation();
 
         kitchenStations[5] = new PreppingStation();
+
+        manager = null;
+
+        menu = new Menu();
     }
 
     /**
@@ -41,8 +54,10 @@ public class DriveThrough implements ServeCustomer {
      *
      * @param customer the customer to add
      */
-    public void addCustomer(Customer customer) {
+    public void addCustomer(Customer customer) { // COUNTS TOWARDS 5 METHOD REQUIREMENT
         getOrderingStation().getCustomerQueue().add(customer);
+
+        incrementTotalCustomersAttempted();
     }
 
     /**
@@ -50,7 +65,7 @@ public class DriveThrough implements ServeCustomer {
      *
      * @param earnings the earnings to add
      */
-    public void addEarnings(double earnings) {
+    public void addEarnings(double earnings) { // COUNTS TOWARDS 5 METHOD REQUIREMENT
         // COULD IMPLEMENT TAX CALCULATION LATER
 
         this.earnings += earnings;
@@ -61,10 +76,37 @@ public class DriveThrough implements ServeCustomer {
      *
      * @param employee the employee to add
      */
-    public void addEmployee(Employee employee) {
+    public void addEmployee(Employee employee) { // COUNTS TOWARDS 5 METHOD REQUIREMENT
         getOrderingStation().getEmployeeQueue().add(employee);
 
         employee.setDriveThrough(this);
+    }
+
+    public void incrementTotalCustomersAttempted() // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    {
+        totalCustomersAttempted++;
+    }
+
+    public void decrementTotalCustomersAttempted()
+    {
+        totalCustomersAttempted--;
+    }
+
+    /**
+     * Increments the number of customers served.
+     */
+    public void incrementCustomersServed() { // COUNTS TOWARDS 5 METHOD REQUIREMENT
+        customersServed++;
+    }
+
+    public void setManager(Manager manager)
+    {
+        this.manager = manager;
+    }
+
+    public Menu getMenu()
+    {
+        return menu;
     }
 
     /**
@@ -121,6 +163,11 @@ public class DriveThrough implements ServeCustomer {
         return kitchenStations;
     }
 
+    public Manager getManager()
+    {
+        return manager;
+    }
+
     /**
      * Returns the ordering station.
      *
@@ -147,11 +194,20 @@ public class DriveThrough implements ServeCustomer {
     public PreppingStation getPreppingStation() {
         return (PreppingStation) kitchenStations[5];
     }
+    public void setCustomersServed(int customersServed) {
+        this.customersServed = customersServed;
+    }
 
-    /**
-     * Increments the number of customers served.
-     */
-    public void incrementCustomersServed() {
-        customersServed++;
+    public void setTotalCustomersAttempted(int totalCustomersAttempted) {
+        this.totalCustomersAttempted = totalCustomersAttempted;
+    }
+
+    public void setEarnings(double earnings) {
+        this.earnings = earnings;
+    }
+
+    public void setMenu(Menu menu)
+    {
+        this.menu = menu;
     }
 }
