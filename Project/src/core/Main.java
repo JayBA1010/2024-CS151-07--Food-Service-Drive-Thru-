@@ -1,14 +1,14 @@
 package core;
 
-import menuItems.Menu;
-import people.*;
+import people.Customer;
+import people.Employee;
+import people.Manager;
 import stations.KitchenStation;
-import menuItems.Order;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.LinkedList;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * The Main class serves as the entry point for the drive-through simulation program.
@@ -72,14 +72,11 @@ public class Main {
                     }
                 }
             }
-            
-            if(time > 0 && time % pauseInterval == 0)
-            {
+
+            if (time > 0 && time % pauseInterval == 0) {
                 ui.printDivider();
                 pauseMenu();
-            }
-            else
-            {
+            } else {
                 System.out.println();
             }
         }
@@ -112,15 +109,14 @@ public class Main {
     public static void printHeader() // COUNTS TOWARDS 5 METHOD REQUIREMENT
     {
         System.out.println("CS 151 Project 1: Drive-through Simulation Progr" +
-        "am");
+                "am");
         System.out.println();
         System.out.println("By Aung Aung, Aung Khant \"Junior\" Kyaw, Jay Ba" +
-        "rrios Abarquez, and Kenneth\nEstrada");
+                "rrios Abarquez, and Kenneth\nEstrada");
         ui.printDivider();
     }
 
-    public static void pauseMenu()
-    {
+    public static void pauseMenu() {
         boolean menuActive = true;
 
         while (menuActive) {
@@ -143,37 +139,29 @@ public class Main {
                 customerMenu();
             } else if (choice == 2) {
                 ui.printDivider();
-                if(!driveThrough.getOrderingStation().getCustomerQueue().isEmpty())
-                {
-                    for(int i = 0; i < driveThrough.getOrderingStation().getCustomerQueue().size(); i++)
-                    {
-                        System.out.println((i + 1) + ") " + driveThrough.getOrderingStation().getCustomerQueue().get(i).getName() + " (" + driveThrough.getOrderingStation().getCustomerQueue().get(i).getOrder().getName() + ")"); 
+                if (!driveThrough.getOrderingStation().getCustomerQueue().isEmpty()) {
+                    for (int i = 0; i < driveThrough.getOrderingStation().getCustomerQueue().size(); i++) {
+                        System.out.println((i + 1) + ") " + driveThrough.getOrderingStation().getCustomerQueue().get(i).getName() + " (" + driveThrough.getOrderingStation().getCustomerQueue().get(i).getOrder().getName() + ")");
                     }
-                    
+
                     System.out.println();
 
                     int integerInput = ui.integerInput(1, driveThrough.getOrderingStation().getCustomerQueue().size(), "Remove Customer (Integer)");
                     driveThrough.getOrderingStation().getCustomerQueue().remove(integerInput - 1);
                     driveThrough.decrementTotalCustomersAttempted();
-                }
-                else
-                {
+                } else {
                     System.out.println("There are no customers to remove.");
                 }
                 ui.printDivider();
             } else if (choice == 3) {
                 ui.printDivider();
-                if(!driveThrough.getOrderingStation().getCustomerQueue().isEmpty())
-                {
-                    for(int i = 0; i < driveThrough.getOrderingStation().getCustomerQueue().size(); i++)
-                    {
+                if (!driveThrough.getOrderingStation().getCustomerQueue().isEmpty()) {
+                    for (int i = 0; i < driveThrough.getOrderingStation().getCustomerQueue().size(); i++) {
                         System.out.println((i + 1) + ") " + driveThrough.getOrderingStation().getCustomerQueue().get(i).getName() + " (" + driveThrough.getOrderingStation().getCustomerQueue().get(i).getOrder().getName() + ")");
                     }
 
                     System.out.println();
-                }
-                else
-                {
+                } else {
                     System.out.println("There are no customers in line.");
                 }
                 ui.printDivider();
@@ -237,10 +225,9 @@ public class Main {
                 ui.printDivider();
             }
         }
-        
+
         ui.printDivider();
     }
-
 
 
     public static void customerMenu() // COUNTS TOWARDS 5 METHOD REQUIREMENT

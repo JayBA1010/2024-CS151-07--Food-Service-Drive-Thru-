@@ -67,7 +67,6 @@ public class UI implements Formatting {
     }
 
 
-
     /**
      * Prompts the user for an integer input and returns the input.
      *
@@ -78,53 +77,46 @@ public class UI implements Formatting {
      */
 
     public int integerInput(Integer min, Integer max, String prompt) { // COUNTS TOWARDS 5 METHOD REQUIREMENT
-        try
-        {
+        try {
             printPrompt(prompt);
-            
+
             int integer = scanner.nextInt();
 
             scanner.nextLine();
 
-            while((min != null && integer < min) || (max != null && integer >
-            max))
-            {
+            while ((min != null && integer < min) || (max != null && integer >
+                    max)) {
                 System.out.println();
 
                 System.out.print("Please enter a valid integer");
 
-                if(min != null)
-                {
+                if (min != null) {
                     System.out.print(" greater or equal to " + (min));
                 }
 
-                if(min != null && max != null)
-                {
+                if (min != null && max != null) {
                     System.out.print(" and");
                 }
 
-                if(max != null)
-                {
+                if (max != null) {
                     System.out.print(" less or equal to " + (max));
                 }
-                
+
                 System.out.println(".");
 
                 System.out.println();
-            
+
                 printPrompt(prompt);
-            
+
                 integer = scanner.nextInt();
             }
 
             return integer;
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             scanner.nextLine();
 
             System.out.println();
-            
+
             System.out.println("Please enter a valid integer.");
 
             System.out.println();
@@ -157,53 +149,46 @@ public class UI implements Formatting {
         */
 
     public double doubleInput(Double min, Double max, String prompt) { // COUNTS TOWARDS 5 METHOD REQUIREMENT
-        try
-        {
+        try {
             printPrompt(prompt);
-            
+
             double input = scanner.nextFloat();
 
             scanner.nextLine();
 
-            while((min != null && input < min) || (max != null && input >
-            max))
-            {
+            while ((min != null && input < min) || (max != null && input >
+                    max)) {
                 System.out.println();
 
                 System.out.print("Please enter a valid double");
 
-                if(min != null)
-                {
+                if (min != null) {
                     System.out.print(" greater or equal to " + (min));
                 }
 
-                if(min != null && max != null)
-                {
+                if (min != null && max != null) {
                     System.out.print(" and");
                 }
 
-                if(max != null)
-                {
+                if (max != null) {
                     System.out.print(" less or equal to " + (max));
                 }
-                
+
                 System.out.println(".");
 
                 System.out.println();
-            
+
                 printPrompt(prompt);
-            
+
                 input = scanner.nextFloat();
             }
 
             return input;
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             scanner.nextLine();
 
             System.out.println();
-            
+
             System.out.println("Please enter a valid double.");
 
             System.out.println();

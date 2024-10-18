@@ -1,27 +1,10 @@
 package people;
 
 import core.DriveThrough;
+import menuItems.*;
 
-import menuItems.FrenchFries;
-
-import menuItems.FriedChicken;
-
-import menuItems.GrilledChicken;
-
-import menuItems.GrilledChickenSandwich;
-
-import menuItems.Hamburger;
-
-import menuItems.IceCream;
-
-import menuItems.Salad;
-
-import menuItems.Soda;
-
-public class Manager extends Person
-{
-    public Manager(DriveThrough driveThrough, String name)
-    {
+public class Manager extends Person {
+    public Manager(DriveThrough driveThrough, String name) {
         super(driveThrough, name);
     }
 

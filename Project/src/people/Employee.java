@@ -87,6 +87,10 @@ public class Employee extends Person {
         return timeAtStation;
     }
 
+    public void setTimeAtStation(int timeAtStation) {
+        this.timeAtStation = timeAtStation;
+    }
+
     /**
      * Increments the time the employee has spent at the current station.
      */
@@ -112,16 +116,16 @@ public class Employee extends Person {
     public void fulfillOrder(int time) // COUNTS TOWARDS 5 METHOD REQUIREMENT
     {
 //            Order order = customer.getOrder();
-            double price = customer.getOrder().getPrice();
+        double price = customer.getOrder().getPrice();
 
-            driveThrough.incrementCustomersServed();
+        driveThrough.incrementCustomersServed();
 
-            driveThrough.addEarnings(price);
+        driveThrough.addEarnings(price);
 
-            System.out.println("(Tick " + time + ") " + name +
-                    " (Employee) " + "has fulfilled an order of " + customer.getOrder().getName() +
-                    " from " + customer.getName() + " (Customer) and earned $" + price
-                    + ".");
+        System.out.println("(Tick " + time + ") " + name +
+                " (Employee) " + "has fulfilled an order of " + customer.getOrder().getName() +
+                " from " + customer.getName() + " (Customer) and earned $" + price
+                + ".");
     }
 
     public void checkPrecedence(KitchenStation kitchenStation) // COUNTS TOWARDS 5 METHOD REQUIREMENT
@@ -162,10 +166,6 @@ public class Employee extends Person {
 
     public Iterator<String> getCurrentTask() {
         return currentTask;
-    }
-
-    public void setTimeAtStation(int timeAtStation) {
-        this.timeAtStation = timeAtStation;
     }
 
     /**
