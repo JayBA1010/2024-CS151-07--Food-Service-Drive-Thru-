@@ -14,7 +14,7 @@ Compile the Java Files (In Windows)
 =======
 How to run the code
 
-1. Compile the Java Files
+Compile the Java Files
 
 [Run in cmd on src folder]
 for /r %f in (*.java) do javac -d "../bin" "%f"
@@ -25,7 +25,7 @@ Now the source code should be compiled as class files in a bin folder contained 
 Run the Program from .class Files
 =======
 
-2. Run the Program from .class Files
+Run the Program from .class Files
 
 [Run in cmd on bin folder]
 java -cp ../bin core.Main
