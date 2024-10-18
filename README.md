@@ -4,8 +4,10 @@ The DriveThrough class simulates the operations of a drive-through restaurant.
  * customers served and the earnings.
 
 # Design 
-Customers: 
-Employees: 
+(Major Class summaries) <br/>
+Customers: Represents a customer who places an order at the drive-through <br/>
+Employees: Represents an employee that handles customers and moves between different kitchen stations. <br/>
+Kitchen Stations: Represents a station where employees work, including the name, precedence, and a specific duration of use <br/>
 
 # Installation Instructions
 Compile the Java Files
