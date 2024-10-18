@@ -1,87 +1,134 @@
 package menuItems;
 
-public class Menu {
-    private static FrenchFries frenchFries;
-    private static FriedChicken friedChicken;
-    private static GrilledChicken grilledChicken;
-    private static GrilledChickenSandwich grilledChickenSandwich;
-    private static Hamburger hamburger;
-    private static IceCream iceCream;
-    private static Salad salad;
-    private static Soda soda;
+public class Menu
+{
+    private Order[] orders = new Order[8];
 
-    static {
-        frenchFries = new FrenchFries();
-        friedChicken = new FriedChicken();
-        grilledChicken = new GrilledChicken();
-        grilledChickenSandwich = new GrilledChickenSandwich();
-        hamburger = new Hamburger();
-        iceCream = new IceCream();
-        salad = new Salad();
-        soda = new Soda();
+    public Menu()
+    {
+        orders[0] = new FrenchFries();
+
+        orders[1] = new FriedChicken();
+
+        orders[2] = new GrilledChicken();
+
+        orders[3] = new GrilledChickenSandwich();
+
+        orders[4] = new Hamburger();
+
+        orders[5] = new IceCream();
+
+        orders[6] = new Salad();
+
+        orders[7] = new Soda();
     }
 
-    public static void updateFrenchFriesPrice(double newPrice) {
-        frenchFries = new FrenchFries(newPrice);
+    public FrenchFries getFrenchFries()
+    {
+        return (FrenchFries) orders[0];
     }
 
-    public static void updateFriedChickenPrice(double newPrice) {
-        friedChicken = new FriedChicken(newPrice);
+    public FriedChicken getFriedChicken()
+    {
+        return (FriedChicken) orders[1];
     }
 
-    public static void updateGrilledChickenPrice(double newPrice) {
-        grilledChicken = new GrilledChicken(newPrice);
+    public GrilledChicken getGrilledChicken()
+    {
+        return (GrilledChicken) orders[2];
     }
 
-    public static void updateGrilledChickenSandwichPrice(double newPrice) {
-        grilledChickenSandwich = new GrilledChickenSandwich(newPrice);
+    public GrilledChickenSandwich getGrilledChickenSandwich()
+    {
+        return (GrilledChickenSandwich) orders[3];
     }
 
-    public static void updateHamburgerPrice(double newPrice) {
-        hamburger = new Hamburger(newPrice);
+    public Hamburger getHamburger()
+    {
+        return (Hamburger) orders[4];
     }
 
-    public static void updateIceCreamPrice(double newPrice) {
-        iceCream = new IceCream(newPrice);
+    public IceCream getIceCream()
+    {
+        return (IceCream) orders[5];
     }
 
-    public static void updateSaladPrice(double newPrice) {
-        salad = new Salad(newPrice);
+    public Order getOrder(int index)
+    {
+        return orders[index];
     }
 
-    public static void updateSodaPrice(double newPrice) {
-        soda = new Soda(newPrice);
+    public Order[] getOrders()
+    {
+        return orders;
     }
 
-    public static FrenchFries getFrenchFries() {
-        return new FrenchFries(frenchFries.getPrice());
+    public Salad getSalad()
+    {
+        return (Salad) orders[6];
     }
 
-    public static FriedChicken getFriedChicken() {
-        return new FriedChicken(friedChicken.getPrice());
+    public Soda getSoda()
+    {
+        return (Soda) orders[7];
     }
 
-    public static GrilledChicken getGrilledChicken() {
-        return new GrilledChicken(grilledChicken.getPrice());
+    public void setFrenchFries(FrenchFries frenchFries)
+    {
+        orders[0] = frenchFries;
     }
 
-    public static GrilledChickenSandwich getGrilledChickenSandwich() {
-        return new GrilledChickenSandwich(grilledChickenSandwich.getPrice());
+    public void setFriedChicken(FriedChicken friedChicken)
+    {
+        orders[1] = friedChicken;
     }
 
-    public static Hamburger getHamburger() {
-        return new Hamburger(hamburger.getPrice());
+    public void setGrilledChicken(GrilledChicken grilledChicken)
+    {
+        orders[2] = grilledChicken;
     }
 
-    public static IceCream getIceCream() {
-        return new IceCream(iceCream.getPrice());
+    public void setGrilledChickenSandwich(GrilledChickenSandwich grilledChickenSandwich)
+    {
+        orders[3] = grilledChickenSandwich;
     }
 
-    public static Salad getSalad() {
-        return new Salad(salad.getPrice());
+    public void setHamburger(Hamburger hamburger)
+    {
+        orders[4] = hamburger;
     }
 
-    public static Soda getSoda() {
-        return new Soda(soda.getPrice());
+    public void setIceCream(IceCream iceCream)
+    {
+        orders[5] = iceCream;
     }
+
+    public void setOrders(Order[] orders)
+    {
+        this.orders = orders;
+    }
+
+    public void setSalad(Salad salad)
+    {
+        orders[6] = salad;
+    }
+
+    public void setSoda(Soda soda)
+    {
+        orders[7] = soda;
+    }
+
+    public String[] toStringArray()
+    {
+        String[] stringArray = new String[8];
+
+        for(int i = 0; i < orders.length; i++)
+        {
+            stringArray[i] = orders[i].getName() + " ($" + orders[i].getPrice() + ")";
+        }
+        
+        return stringArray;
+    }
+
+
 }
