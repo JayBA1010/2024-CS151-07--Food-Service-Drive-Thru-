@@ -10,7 +10,7 @@ Employees: Represents an employee that handles customers and moves between diffe
 Kitchen Stations: Represents a station where employees work, including the name, precedence, and a specific duration of use <br/>
 
 # Installation Instructions
-Compile the Java Files
+Compile the Java Files (In Windows)
 
 [Run in cmd on src folder]
 for /r %f in (*.java) do javac -d "../bin" "%f"
