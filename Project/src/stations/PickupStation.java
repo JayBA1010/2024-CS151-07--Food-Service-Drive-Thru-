@@ -1,7 +1,5 @@
 package stations;
 
-import core.DriveThrough;
-import people.Customer;
 import people.Employee;
 
 public class PickupStation extends KitchenStation {

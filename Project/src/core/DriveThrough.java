@@ -1,7 +1,10 @@
 package core;
 
 import menuItems.Menu;
-import people.*;
+import people.Customer;
+import people.Employee;
+import people.Manager;
+import people.ServeCustomer;
 import stations.*;
 
 /**
@@ -10,17 +13,13 @@ import stations.*;
  * customers served and the earnings.
  */
 public class DriveThrough implements ServeCustomer {
-    
-    private Manager manager;
+
     private final KitchenStation[] kitchenStations = new KitchenStation[6];
+    private Manager manager;
     private int customersServed;
     private int totalCustomersAttempted;
     private double earnings;
     private Menu menu;
-
-    public int getTotalCustomersAttempted() {
-        return totalCustomersAttempted;
-    }
 
     /**
      * Constructs a DriveThrough instance with predefined kitchen stations.
@@ -47,6 +46,14 @@ public class DriveThrough implements ServeCustomer {
         manager = null;
 
         menu = new Menu();
+    }
+
+    public int getTotalCustomersAttempted() {
+        return totalCustomersAttempted;
+    }
+
+    public void setTotalCustomersAttempted(int totalCustomersAttempted) {
+        this.totalCustomersAttempted = totalCustomersAttempted;
     }
 
     /**
@@ -87,8 +94,7 @@ public class DriveThrough implements ServeCustomer {
         totalCustomersAttempted++;
     }
 
-    public void decrementTotalCustomersAttempted()
-    {
+    public void decrementTotalCustomersAttempted() {
         totalCustomersAttempted--;
     }
 
@@ -99,14 +105,12 @@ public class DriveThrough implements ServeCustomer {
         customersServed++;
     }
 
-    public void setManager(Manager manager)
-    {
-        this.manager = manager;
+    public Menu getMenu() {
+        return menu;
     }
 
-    public Menu getMenu()
-    {
-        return menu;
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 
     /**
@@ -116,6 +120,10 @@ public class DriveThrough implements ServeCustomer {
      */
     public int getCustomersServed() {
         return customersServed;
+    }
+
+    public void setCustomersServed(int customersServed) {
+        this.customersServed = customersServed;
     }
 
     /**
@@ -134,6 +142,10 @@ public class DriveThrough implements ServeCustomer {
      */
     public double getEarnings() {
         return earnings;
+    }
+
+    public void setEarnings(double earnings) {
+        this.earnings = earnings;
     }
 
     /**
@@ -163,9 +175,12 @@ public class DriveThrough implements ServeCustomer {
         return kitchenStations;
     }
 
-    public Manager getManager()
-    {
+    public Manager getManager() {
         return manager;
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
     }
 
     /**
@@ -193,21 +208,5 @@ public class DriveThrough implements ServeCustomer {
      */
     public PreppingStation getPreppingStation() {
         return (PreppingStation) kitchenStations[5];
-    }
-    public void setCustomersServed(int customersServed) {
-        this.customersServed = customersServed;
-    }
-
-    public void setTotalCustomersAttempted(int totalCustomersAttempted) {
-        this.totalCustomersAttempted = totalCustomersAttempted;
-    }
-
-    public void setEarnings(double earnings) {
-        this.earnings = earnings;
-    }
-
-    public void setMenu(Menu menu)
-    {
-        this.menu = menu;
     }
 }

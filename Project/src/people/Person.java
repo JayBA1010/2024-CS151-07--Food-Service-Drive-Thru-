@@ -19,13 +19,11 @@ public abstract class Person {
         this.name = name;
     }
 
-    public DriveThrough getDriveThrough()
-    {
+    public DriveThrough getDriveThrough() {
         return driveThrough;
     }
 
-    public void setDriveThrough(DriveThrough driveThrough)
-    {
+    public void setDriveThrough(DriveThrough driveThrough) {
         this.driveThrough = driveThrough;
     }
 
@@ -37,6 +35,7 @@ public abstract class Person {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }

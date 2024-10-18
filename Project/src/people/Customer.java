@@ -1,14 +1,12 @@
 package people;
 
 import core.DriveThrough;
-
 import menuItems.Order;
 
 /**
  * Represents a customer who places an order at the drive-through.
  */
-public class Customer extends Person
-{
+public class Customer extends Person {
     private Order order;
 
     /**
@@ -17,8 +15,7 @@ public class Customer extends Person
      * @param name  the name of the customer
      * @param order the name of the order
      */
-    public Customer(DriveThrough driveThrough, String name, Order order)
-    {
+    public Customer(DriveThrough driveThrough, String name, Order order) {
         super(driveThrough, name);
 
         this.order = order;
@@ -33,8 +30,7 @@ public class Customer extends Person
         return order;
     }
 
-    public void setOrder(Order order)
-    {
+    public void setOrder(Order order) {
         this.order = order;
     }
 }

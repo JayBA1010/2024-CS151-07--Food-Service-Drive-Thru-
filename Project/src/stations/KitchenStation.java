@@ -9,14 +9,10 @@ import java.util.LinkedList;
  * Each station has a name, precedence, and a specific duration of use.
  */
 public abstract class KitchenStation {
-    private LinkedList<Employee> employeeQueue;
-
     private final String name;
-
     private final int precedence; // Ensures ordering of stations
-
     private final int useDuration;
-
+    private final LinkedList<Employee> employeeQueue;
     private boolean isCleaned;
 
     private boolean isPrepped;
@@ -116,11 +112,11 @@ public abstract class KitchenStation {
     public void logAction(Employee employee, int time) // COUNTS TOWARDS 5 METHOD REQUIREMENT
     {
         System.out.println("(Tick " + time + ") " + employee.getName() +
-        " (Employee) " + "has been working at " + name + " for " +
-        employee.getTimeAtStation() + " tick" + (employee.getTimeAtStation() == 1 ? "" : "s") + ".");
+                " (Employee) " + "has been working at " + name + " for " +
+                employee.getTimeAtStation() + " tick" + (employee.getTimeAtStation() == 1 ? "" : "s") + ".");
     }
 
-    public void  logCleaning() // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    public void logCleaning() // COUNTS TOWARDS 5 METHOD REQUIREMENT
     {
         System.out.println(name + " is being cleaned.");
 
@@ -134,23 +130,19 @@ public abstract class KitchenStation {
         isPrepped = true;
     }
 
-    public boolean getIsCleaned()
-    {
+    public boolean getIsCleaned() {
         return isCleaned;
     }
 
-    public boolean getIsPrepped()
-    {
-        return isPrepped;
-    }
-
-    public void setIsCleaned(boolean setting)
-    {
+    public void setIsCleaned(boolean setting) {
         isCleaned = setting;
     }
 
-    public void setIsPrepped(boolean setting)
-    {
+    public boolean getIsPrepped() {
+        return isPrepped;
+    }
+
+    public void setIsPrepped(boolean setting) {
         isPrepped = setting;
     }
 }
