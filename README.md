@@ -16,7 +16,7 @@ Represents a manager in a drive-through system that can update the prices of var
 Represents a station where employees work, including the name, precedence, and a specific duration of use <br/>
 
 # Installation Instructions
-How to run the code:
+### How to run the code:
 
 The source code should already have compiled class files in the out/production/Project folder.
 
@@ -26,7 +26,7 @@ Compile the Java Files (In Windows):
 for /r %f in (*.java) do javac -d "../project" "%f"
 
 # Usage
-Run the Program from .class Files:
+### Run the Program from .class Files:
 
 [Run in cmd on project folder]
 java -cp ../project core.Main
@@ -42,7 +42,11 @@ Estrada
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # Contributions
-Aung Aung - Documentation and Main Debugger <br/>
-Jay Barrios Abarquez - Code Polisher and Debugger <br/>
-Kenneth Estrada - Designed our UML and Debugger <br/>
-Junior Kyaw - Coded our Prototype 
+### Aung Aung
+Documentation and Main Debugger <br/>
+### Jay Barrios Abarquez
+Code Polisher and Debugger <br/>
+### Kenneth Estrada
+Designed our UML and Debugger <br/>
+### Junior Kyaw
+Coded our Prototype 
