@@ -19,12 +19,14 @@ public abstract class Person {
         this.name = name;
     }
 
+    //Getters
+    /**
+     * Gets the drive-through associated with the person.
+     *
+     * @return the drive-through 
+     */
     public DriveThrough getDriveThrough() {
         return driveThrough;
-    }
-
-    public void setDriveThrough(DriveThrough driveThrough) {
-        this.driveThrough = driveThrough;
     }
 
     /**
@@ -36,6 +38,21 @@ public abstract class Person {
         return name;
     }
 
+    //Setters
+    /**
+     * Sets the drive-through associated with the person.
+     *
+     * @param driveThrough the drive-through to set
+     */
+    public void setDriveThrough(DriveThrough driveThrough) {
+        this.driveThrough = driveThrough;
+    }
+
+    /**
+     * Sets the name of the person.
+     *
+     * @param name the name to set
+     */
     public void setName(String name) {
         this.name = name;
     }
