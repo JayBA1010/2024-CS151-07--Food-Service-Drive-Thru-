@@ -2,7 +2,6 @@ package people;
 
 import core.DriveThrough;
 import stations.KitchenStation;
-
 import java.util.Iterator;
 
 /**
@@ -41,7 +40,7 @@ public class Employee extends Person {
      *
      * @param time the current time tick in the simulation
      */
-    public void changeKitchenStation(int time) { // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    public void changeKitchenStation(int time) {
         KitchenStation kitchenStation = null;
 
         // Move to the next station based on the iterator
@@ -79,26 +78,13 @@ public class Employee extends Person {
     }
 
     /**
-     * Gets the time spent at the current station.
-     *
-     * @return the time at the station
-     */
-    public int getTimeAtStation() {
-        return timeAtStation;
-    }
-
-    public void setTimeAtStation(int timeAtStation) {
-        this.timeAtStation = timeAtStation;
-    }
-
-    /**
      * Increments the time the employee has spent at the current station.
      */
-    public void incrementTimeAtStation() { // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    public void incrementTimeAtStation() { 
         timeAtStation++;
     }
 
-    public void processOrder(int time) // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    public void processOrder(int time) 
     {
         customer = driveThrough.getOrderingStation().getCustomerQueue().getFirst();
 
@@ -113,7 +99,7 @@ public class Employee extends Person {
                 " from " + customer.getName() + " (Customer).");
     }
 
-    public void fulfillOrder(int time) // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    public void fulfillOrder(int time) 
     {
 //            Order order = customer.getOrder();
         double price = customer.getOrder().getPrice();
@@ -128,7 +114,7 @@ public class Employee extends Person {
                 + ".");
     }
 
-    public void checkPrecedence(KitchenStation kitchenStation) // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    public void checkPrecedence(KitchenStation kitchenStation) 
     {
         // If the station that employee will move to exists later in the wave compared to the station you just left, ensures time is correct
         if (kitchenStation.getPrecedence() > this.kitchenStation.getPrecedence()) {
@@ -136,6 +122,16 @@ public class Employee extends Person {
         } else {
             timeAtStation = 0;
         }
+    }
+
+    //Getters
+    /**
+     * Gets the current kitchen station of the employee.
+     *
+     * @return the current kitchen station
+     */
+    public KitchenStation getKitchenStation() {
+        return kitchenStation;
     }
 
     /**
@@ -148,24 +144,40 @@ public class Employee extends Person {
     }
 
     /**
+     * Gets the iterator for the current tasks of the employee.
+     *
+     * @return the current task iterator
+     */
+    public Iterator<String> getCurrentTask() {
+        return currentTask;
+    }
+
+    /**
+     * Gets the time spent at the current station.
+     *
+     * @return the time at the station
+     */
+    public int getTimeAtStation() {
+        return timeAtStation;
+    }
+
+    //Setters
+    /**
+     * Sets the kitchen station of the employee.
+     *
+     * @param kitchenStation the kitchen station to set
+     */
+    public void setKitchenStation(KitchenStation kitchenStation) {
+        this.kitchenStation = kitchenStation;
+    }
+
+    /**
      * Sets the customer the employee is serving.
      *
      * @param customer the customer to set
      */
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
-
-    public KitchenStation getKitchenStation() {
-        return kitchenStation;
-    }
-
-    public void setKitchenStation(KitchenStation kitchenStation) {
-        this.kitchenStation = kitchenStation;
-    }
-
-    public Iterator<String> getCurrentTask() {
-        return currentTask;
     }
 
     /**
@@ -175,5 +187,15 @@ public class Employee extends Person {
      */
     public void setCurrentTask(Iterator<String> iterator) {
         this.currentTask = iterator;
+    }
+
+    /**
+     * Sets the time spent at the current station.
+     *
+     * @param timeAtStation the time to set
+     */
+
+     public void setTimeAtStation(int timeAtStation) {
+        this.timeAtStation = timeAtStation;
     }
 }

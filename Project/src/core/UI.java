@@ -1,5 +1,6 @@
 package core;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -19,7 +20,7 @@ public class UI implements Formatting {
     /**
      * Closes the scanner in the UI class.
      */
-    public void closeScanner() { // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    public void closeScanner() {
         scanner.close();
     }
 
@@ -40,7 +41,7 @@ public class UI implements Formatting {
      *
      * @param entries the list of entries to print
      */
-    public void printNumberedList(String[] entries) { // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    public void printNumberedList(String[] entries) {
         for (int i = 0; i < entries.length; i++) {
             System.out.println((i + 1) + ") " + entries[i]);
         }
@@ -76,131 +77,104 @@ public class UI implements Formatting {
      * @return the integer input
      */
 
-    public int integerInput(Integer min, Integer max, String prompt) { // COUNTS TOWARDS 5 METHOD REQUIREMENT
-        try {
-            printPrompt(prompt);
-
-            int integer = scanner.nextInt();
-
-            scanner.nextLine();
-
-            while ((min != null && integer < min) || (max != null && integer >
-                    max)) {
-                System.out.println();
-
-                System.out.print("Please enter a valid integer");
-
-                if (min != null) {
-                    System.out.print(" greater or equal to " + (min));
-                }
-
-                if (min != null && max != null) {
-                    System.out.print(" and");
-                }
-
-                if (max != null) {
-                    System.out.print(" less or equal to " + (max));
-                }
-
-                System.out.println(".");
-
-                System.out.println();
-
+    public int integerInput(Integer min, Integer max, String prompt) {
+        while (true) {
+            try {
                 printPrompt(prompt);
-
-                integer = scanner.nextInt();
+                int integer = scanner.nextInt();
+                scanner.nextLine();  // Clear the buffer
+                if ((min == null || integer >= min) && (max == null || integer <= max)) {
+                    return integer;  // Valid input
+                }
+                // If input is out of range, display error message
+                System.out.print("Please enter a valid integer");
+                if (min != null) {
+                    System.out.print(" greater than or equal to " + min);
+                }
+                if (max != null) {
+                    if (min != null) {
+                        System.out.print(" and");
+                    }
+                    System.out.print(" less than or equal to " + max);
+                }
+                System.out.println(".");
+            } catch (InputMismatchException e) {
+                scanner.nextLine();
+                System.out.println("Please enter a valid integer.");
             }
-
-            return integer;
-        } catch (Exception e) {
-            scanner.nextLine();
-
-            System.out.println();
-
-            System.out.println("Please enter a valid integer.");
-
-            System.out.println();
-
-            return integerInput(min, max, prompt);
         }
     }
 
     /**
-     * Gets string input.
+     * Prompts the user for a string input.
+     *
+     * @param prompt the message to prompt the user for input
+     * @return the string input from the user
      */
-    public String stringInput(String prompt) { // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    public String stringInput(String prompt) { 
         printPrompt(prompt);
         return scanner.nextLine();
     }
-    /*
-    public double doubleInput(String prompt) {
+
+
+    /**
+     * Prompts the user for a double input within a specified range.
+     * If the input is invalid or outside the range, the user is prompted again.
+     *
+     * @param min    the minimum acceptable value 
+     * @param max    the maximum acceptable value 
+     * @param prompt the message to prompt the user for input
+     * @return the valid double input from the user
+     */
+    public double doubleInput(Double min, Double max, String prompt) {
         while (true) {
             try {
                 printPrompt(prompt);
-                double value = scanner.nextDouble();
-                scanner.nextLine();  // Clear buffer
-                return value;
-            } catch (Exception e) {
-                scanner.nextLine();  // Clear the invalid input
-                System.out.println("Please enter a valid number.");
-            }
-        }
-    }
-        */
+                double input = scanner.nextDouble();
+                scanner.nextLine();  // Clear the buffer
 
-    public double doubleInput(Double min, Double max, String prompt) { // COUNTS TOWARDS 5 METHOD REQUIREMENT
-        try {
-            printPrompt(prompt);
+                // Check if input is within the valid range
+                if ((min == null || input >= min) && (max == null || input <= max)) {
+                    return input;  // Valid input
+                }
 
-            double input = scanner.nextFloat();
-
-            scanner.nextLine();
-
-            while ((min != null && input < min) || (max != null && input >
-                    max)) {
-                System.out.println();
-
+                // If input is out of range, display error message
                 System.out.print("Please enter a valid double");
-
                 if (min != null) {
-                    System.out.print(" greater or equal to " + (min));
+                    System.out.print(" greater than or equal to " + min);
                 }
-
-                if (min != null && max != null) {
-                    System.out.print(" and");
-                }
-
                 if (max != null) {
-                    System.out.print(" less or equal to " + (max));
+                    if (min != null) {
+                        System.out.print(" and");
+                    }
+                    System.out.print(" less than or equal to " + max);
                 }
-
                 System.out.println(".");
 
-                System.out.println();
-
-                printPrompt(prompt);
-
-                input = scanner.nextFloat();
+            } catch (InputMismatchException e) {
+                // Handle non-numeric input
+                scanner.nextLine();  // Clear the invalid input from the buffer
+                System.out.println("Please enter a valid double.");
             }
-
-            return input;
-        } catch (Exception e) {
-            scanner.nextLine();
-
-            System.out.println();
-
-            System.out.println("Please enter a valid double.");
-
-            System.out.println();
-
-            return doubleInput(min, max, prompt);
         }
     }
 
+    //Getters
+    /**
+     * Returns the scanner used for user input
+     *
+     * @return the scanner object
+     */
     public Scanner getScanner() {
         return scanner;
     }
 
+    //Setters
+    /**
+     * Sets the scanner for user input
+     *
+     * @param scanner the scanner object to set
+     */
     public void setScanner(Scanner scanner) {
         this.scanner = scanner;
     }

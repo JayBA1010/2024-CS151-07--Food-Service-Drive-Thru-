@@ -52,6 +52,4 @@ public abstract class Order {
     public LinkedList<String> getTasks() {
         return tasks;
     }
-
-
 }

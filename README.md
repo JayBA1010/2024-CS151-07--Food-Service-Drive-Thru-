@@ -1,7 +1,6 @@
 # Overview
 The DriveThrough class simulates the operations of a drive-through restaurant.
- * It manages customers, employees, and kitchen stations, tracking the number of
- * customers served and the earnings.
+ * It manages customers, employees, and kitchen stations, tracking the number of customers served and the earnings.
 
 # Design 
 (Major Class summaries) <br/>

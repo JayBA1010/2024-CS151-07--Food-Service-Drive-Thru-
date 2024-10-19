@@ -48,18 +48,12 @@ public class DriveThrough implements ServeCustomer {
         menu = new Menu();
     }
 
-    public int getTotalCustomersAttempted() {
-        return totalCustomersAttempted;
-    }
-
-
-
     /**
      * Adds a customer to the ordering station's queue.
      *
      * @param customer the customer to add
      */
-    public void addCustomer(Customer customer) { // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    public void addCustomer(Customer customer) { 
         getOrderingStation().getCustomerQueue().add(customer);
 
         incrementTotalCustomersAttempted();
@@ -70,7 +64,7 @@ public class DriveThrough implements ServeCustomer {
      *
      * @param earnings the earnings to add
      */
-    public void addEarnings(double earnings) { // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    public void addEarnings(double earnings) { 
         // COULD IMPLEMENT TAX CALCULATION LATER
 
         this.earnings += earnings;
@@ -81,17 +75,22 @@ public class DriveThrough implements ServeCustomer {
      *
      * @param employee the employee to add
      */
-    public void addEmployee(Employee employee) { // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    public void addEmployee(Employee employee) { 
         getOrderingStation().getEmployeeQueue().add(employee);
 
         employee.setDriveThrough(this);
     }
 
-    public void incrementTotalCustomersAttempted() // COUNTS TOWARDS 5 METHOD REQUIREMENT
-    {
+    /**
+     * Increments the total number of customers attempted by one.
+     */
+    public void incrementTotalCustomersAttempted() {
         totalCustomersAttempted++;
     }
 
+    /**
+     * Decrements the total number of customers attempted by one.
+     */
     public void decrementTotalCustomersAttempted() {
         totalCustomersAttempted--;
     }
@@ -102,13 +101,15 @@ public class DriveThrough implements ServeCustomer {
     public void incrementCustomersServed() { // COUNTS TOWARDS 5 METHOD REQUIREMENT
         customersServed++;
     }
-
-    public Menu getMenu() {
-        return menu;
-    }
-
-    public void setMenu(Menu menu) {
-        this.menu = menu;
+    
+    //Getters
+    /**
+     * Returns manager of the DriveThru
+     *
+     * @return the Manager object
+     */
+    public Manager getManager() {
+        return manager;
     }
 
     /**
@@ -119,18 +120,14 @@ public class DriveThrough implements ServeCustomer {
     public int getCustomersServed() {
         return customersServed;
     }
-
-    public void setCustomersServed(int customersServed) {
-        this.customersServed = customersServed;
-    }
-
+    
     /**
-     * Returns the dessert station.
+     * Returns the total number of customers attempted 
      *
-     * @return the dessert station
+     * @return the number of customers attempted 
      */
-    public DessertStation getDessertStation() {
-        return (DessertStation) kitchenStations[0];
+    public int getTotalCustomersAttempted() {
+        return totalCustomersAttempted;
     }
 
     /**
@@ -141,9 +138,23 @@ public class DriveThrough implements ServeCustomer {
     public double getEarnings() {
         return earnings;
     }
+    
+    /**
+     * Returns the menu
+     *
+     * @return the menu
+     */
+    public Menu getMenu() {
+        return menu;
+    }
 
-    public void setEarnings(double earnings) {
-        this.earnings = earnings;
+    /**
+     * Returns all the kitchen stations.
+     *
+     * @return an array of kitchen stations
+     */
+    public KitchenStation[] getKitchenStations() {
+        return kitchenStations;
     }
 
     /**
@@ -165,20 +176,12 @@ public class DriveThrough implements ServeCustomer {
     }
 
     /**
-     * Returns all the kitchen stations.
+     * Returns the dessert station.
      *
-     * @return an array of kitchen stations
+     * @return the dessert station
      */
-    public KitchenStation[] getKitchenStations() {
-        return kitchenStations;
-    }
-
-    public Manager getManager() {
-        return manager;
-    }
-
-    public void setManager(Manager manager) {
-        this.manager = manager;
+    public DessertStation getDessertStation() {
+        return (DessertStation) kitchenStations[0];
     }
 
     /**
@@ -208,7 +211,49 @@ public class DriveThrough implements ServeCustomer {
         return (PreppingStation) kitchenStations[5];
     }
 
+    //Setters
+    /**
+     * Sets the Manager for this instance
+     * 
+     * @param manager The Manager object to be assigned to this instance
+     */
+    public void setManager(Manager manager) {
+        this.manager = manager;
+    }
+
+    /**
+     * Sets the customersServed for this instance
+     * 
+     * @param customersServed The number of customers served to be assigned to this instance
+     */
+    public void setCustomersServed(int customersServed) {
+        this.customersServed = customersServed;
+    }
+
+    /**
+     * Sets the totalCustomersServed for this instance
+     * 
+     * @param totalCustomersAttempted the total number of attempted customers to be assigned to this instance
+     */
     public void setTotalCustomersAttempted(int totalCustomersAttempted) {
         this.totalCustomersAttempted = totalCustomersAttempted;
+    }
+
+    /**
+     * Sets the earnings for this instance
+     * 
+     * @param earnings The double earnings to be assigned to this instance
+     */
+    public void setEarnings(double earnings) {
+        this.earnings = earnings;
+    }
+
+    /**
+     * Sets the menu for this instance
+     * 
+     * @param menu The Menu object to be assigned to this instance
+     */
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 }
