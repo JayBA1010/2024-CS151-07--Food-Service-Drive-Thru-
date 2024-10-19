@@ -12,18 +12,19 @@ KitchenStation: Represents a station where employees work, including the name, p
 
 # Installation Instructions
 How to run the code:
-Compile the Java Files (In Windows)
+
+The source code should already have compiled class files in the out/production/Project folder.
+
+Compile the Java Files (In Windows):
 
 [Run in cmd on src folder]
-for /r %f in (*.java) do javac -d "../bin" "%f"
-
-Now the source code should be compiled as class files in a bin folder contained in the parent folder of src
+for /r %f in (*.java) do javac -d "../project" "%f"
 
 # Usage
-Run the Program from .class Files
+Run the Program from .class Files:
 
-[Run in cmd on bin folder]
-java -cp ../bin core.Main
+[Run in cmd on project folder]
+java -cp ../project core.Main
 
 You should see
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -34,8 +35,6 @@ By Aung Aung, Aung Khant "Junior" Kyaw, Jay Barrios Abarquez, and Kenneth
 Estrada
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-Customer Count (Integer):
 
 # Contributions
 Aung Aung - Documentation and Main Debugger <br/>
