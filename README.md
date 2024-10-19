@@ -4,8 +4,11 @@ The DriveThrough class simulates the operations of a drive-through restaurant.
 
 # Design 
 (Major Class summaries) <br/>
-Customers: Represents a customer who places an order at the drive-through <br/>
-Employees: Represents an employee that handles customers and moves between different kitchen stations. <br/>
+Main: Serves as the entry point for the drive-through simulation program <br/>
+Drive through: Simulates the operations of a drive-through restaurant <br/>
+UI: Handles user (integer) input and output for the drive-through simulation <br/>
+Employees: Represents an employee that handles customers and moves between different kitchen stations <br/>
+Manager: Represents a manager in a drive-through system that can update the prices of various menu items <br/>
 Kitchen Stations: Represents a station where employees work, including the name, precedence, and a specific duration of use <br/>
 
 # Installation Instructions
@@ -39,4 +42,4 @@ Customer Count (Integer):
 Aung Aung - Documentation and Main Debugger <br/>
 Jay Barrios Abarquez - Code Polisher and Debugger <br/>
 Kenneth Estrada - Designed our UML and Debugger <br/>
-Junior Kyaw - Coded our Prototype
+Junior Kyaw - Coded our Prototype 
