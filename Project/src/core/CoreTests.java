@@ -1,12 +1,19 @@
 package core;
 
 import static org.junit.Assert.*;
+
+import menuItems.*;
 import org.junit.*;
 
 import menuItems.Menu;
 import people.Customer;
 import people.Employee;
 import people.Manager;
+import stations.KitchenStation;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class CoreTests {
 
@@ -21,6 +28,76 @@ public class CoreTests {
         manager = new Manager(driveThrough, "John Doe");
         customer = new Customer(driveThrough, "Jane Doe", driveThrough.getMenu().getOrder(0));
         employee = new Employee(driveThrough, "Employee1");
+    }
+
+    @Test
+    public void autoSimulator() {
+        DriveThrough driveThrough = new DriveThrough();
+        List<Customer> customers = new ArrayList<>();
+        List<Employee> employees = new ArrayList<>();
+        List<Manager> managers = new ArrayList<>();
+        int numberOfInstances = 1000;
+
+        for (int i = 0; i < numberOfInstances; i++) {
+            driveThrough.addCustomer(new Customer(driveThrough, "Customer" + i, new FrenchFries()));
+            customers.add(customer);
+        }
+        assertEquals(numberOfInstances, driveThrough.getOrderingStation().getCustomerQueue().size());
+
+        for (int i = 0; i < numberOfInstances; i++) {
+            driveThrough.addEmployee(new Employee(driveThrough, "Employee" + i));
+            employees.add(employee);
+        }
+        assertEquals(numberOfInstances, driveThrough.getOrderingStation().getEmployeeQueue().size());
+
+        for (int i = 0; i < numberOfInstances; i++) {
+            managers.add(manager);
+        }
+        assertEquals(numberOfInstances, managers.size());
+
+        for (Customer customer : customers) {
+            assertNotNull(customer);
+        }
+        for (Employee employee : employees) {
+            assertNotNull(employee);
+        }
+        for (Manager manager : managers) {
+            assertNotNull(manager);
+        }
+
+        for (int time = 0; time < 5000; time++) {
+            // Like a wave, it does something to a station then moves on to the next
+            for (KitchenStation kitchenStation : driveThrough.getKitchenStations()) {
+                // Checks if an employee is at the current station
+                if (kitchenStation.hasEmployee()) {
+                    // True -> Increment timeAtStation
+                    kitchenStation.useStation(time);
+
+                    LinkedList<Employee> employeeQueue = kitchenStation.getEmployeeQueue();
+
+                    if (employeeQueue.getFirst().getTimeAtStation() == kitchenStation.getUseDuration()) {
+                        employeeQueue.getFirst().changeKitchenStation(time);
+                    }
+                }
+            }
+        }
+
+        System.out.println();
+
+        System.out.println("Simulation Summary");
+
+        System.out.println();
+
+        System.out.println("Total customers attempted: " + driveThrough.getTotalCustomersAttempted());
+        System.out.println("Customers served: " + driveThrough.getCustomersServed());
+
+        int remaining = driveThrough.getTotalCustomersAttempted() - driveThrough.getCustomersServed();
+
+        System.out.println("Customers still waiting: " + remaining);
+
+        System.out.println("Total earnings: " + Main.round(driveThrough.getEarnings(), 2));
+
+        assertEquals(driveThrough.getCustomersServed() * 4.99, driveThrough.getEarnings(), 1);
     }
 
     @Test
