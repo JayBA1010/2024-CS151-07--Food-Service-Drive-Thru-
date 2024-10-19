@@ -1,8 +1,7 @@
 # Overview
 This project simulates the operations of a drive-through restaurant using a tick system. Employees work at various kitchen stations, and the system tracks the workflow as orders are processed through the drive-through.
 
-# Design 
-(Major Class summaries) <br/>
+# Design (Major Class summaries)
 ### Main
 Serves as the entry point for the drive-through simulation program <br/>
 ### DriveThrough
