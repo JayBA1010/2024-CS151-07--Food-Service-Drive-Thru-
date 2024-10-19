@@ -1,15 +1,14 @@
 # Overview
-The DriveThrough class simulates the operations of a drive-through restaurant.
- * It manages customers, employees, and kitchen stations, tracking the number of customers served and the earnings.
+This project simulates the operations of a drive-through restaurant using a tick system. Employees work at various kitchen stations, and the system tracks the workflow as orders are processed through the drive-through.
 
 # Design 
 (Major Class summaries) <br/>
 Main: Serves as the entry point for the drive-through simulation program <br/>
-Drive through: Simulates the operations of a drive-through restaurant <br/>
+DriveThrough: Simulates the operations of a drive-through restaurant <br/>
 UI: Handles user (integer) input and output for the drive-through simulation <br/>
 Employees: Represents an employee that handles customers and moves between different kitchen stations <br/>
 Manager: Represents a manager in a drive-through system that can update the prices of various menu items <br/>
-Kitchen Stations: Represents a station where employees work, including the name, precedence, and a specific duration of use <br/>
+KitchenStation: Represents a station where employees work, including the name, precedence, and a specific duration of use <br/>
 
 # Installation Instructions
 How to run the code:
