@@ -1,7 +1,6 @@
 package stations;
 
 import people.Employee;
-
 import java.util.LinkedList;
 
 /**
@@ -14,7 +13,6 @@ public abstract class KitchenStation {
     private final int useDuration;
     private final LinkedList<Employee> employeeQueue;
     private boolean isCleaned;
-
     private boolean isPrepped;
 
     /**
@@ -53,14 +51,65 @@ public abstract class KitchenStation {
     }
 
     /**
-     * Gets the queue of employees working at this station.
+     * Checks if there is at least one employee assigned to the station.
      *
-     * @return the queue of employees
+     * @return true if the employee queue is not empty, false otherwise
      */
-    public LinkedList<Employee> getEmployeeQueue() {
-        return employeeQueue;
+    public boolean hasEmployee()
+    {
+        return !employeeQueue.isEmpty();
     }
 
+    /**
+     * Simulates an employee using the station at a specific time.
+     * The employee's time spent at the station is incremented and displayed.
+     *
+     * @param time the current time tick
+     */
+    public void useStation(int time) { 
+        Employee employee = employeeQueue.getFirst();
+
+        employee.incrementTimeAtStation();
+
+        if (employee.getTimeAtStation() > 0) {
+            logAction(employee, time);
+        }
+    }
+
+    /**
+     * Logs the action of an employee working at the station.
+     *
+     * @param employee the employee performing the action
+     * @param time     the current time tick
+     */
+    public void logAction(Employee employee, int time) 
+    {
+        System.out.println("(Tick " + time + ") " + employee.getName() +
+                " (Employee) " + "has been working at " + name + " for " +
+                employee.getTimeAtStation() + " tick" + (employee.getTimeAtStation() == 1 ? "" : "s") + ".");
+    }
+
+    /**
+     * Logs the cleaning action of the station.
+     */
+    public void logCleaning() 
+    {
+        System.out.println(name + " is being cleaned.");
+
+        isCleaned = true;
+    }
+
+    /**
+     * Logs the prepping action of the station.
+     */
+    public void logPrepping()
+    {
+        System.out.println(name + " is being prepped.");
+
+        isPrepped = true;
+    }
+
+    //Getters
     /**
      * Gets the name of the station.
      *
@@ -88,61 +137,50 @@ public abstract class KitchenStation {
         return useDuration;
     }
 
-    public boolean hasEmployee() // COUNTS TOWARDS 5 METHOD REQUIREMENT
-    {
-        return !employeeQueue.isEmpty();
-    }
-
     /**
-     * Simulates an employee using the station at a specific time.
-     * The employee's time spent at the station is incremented and displayed.
+     * Gets the queue of employees working at this station.
      *
-     * @param time the current time tick
+     * @return the queue of employees
      */
-    public void useStation(int time) { // COUNTS TOWARDS 5 METHOD REQUIREMENT
-        Employee employee = employeeQueue.getFirst();
-
-        employee.incrementTimeAtStation();
-
-        if (employee.getTimeAtStation() > 0) {
-            logAction(employee, time);
-        }
+    public LinkedList<Employee> getEmployeeQueue() {
+        return employeeQueue;
     }
 
-    public void logAction(Employee employee, int time) // COUNTS TOWARDS 5 METHOD REQUIREMENT
-    {
-        System.out.println("(Tick " + time + ") " + employee.getName() +
-                " (Employee) " + "has been working at " + name + " for " +
-                employee.getTimeAtStation() + " tick" + (employee.getTimeAtStation() == 1 ? "" : "s") + ".");
-    }
-
-    public void logCleaning() // COUNTS TOWARDS 5 METHOD REQUIREMENT
-    {
-        System.out.println(name + " is being cleaned.");
-
-        isCleaned = true;
-    }
-
-    public void logPrepping() // COUNTS TOWARDS 5 METHOD REQUIREMENT
-    {
-        System.out.println(name + " is being prepped.");
-
-        isPrepped = true;
-    }
-
+     /**
+     * Checks if the station is cleaned.
+     *
+     * @return true if the station is cleaned, false otherwise
+     */
     public boolean getIsCleaned() {
         return isCleaned;
     }
 
-    public void setIsCleaned(boolean setting) {
-        isCleaned = setting;
-    }
-
+    /**
+     * Checks if the station is prepped.
+     *
+     * @return true if the station is prepped, false otherwise
+     */
     public boolean getIsPrepped() {
         return isPrepped;
     }
 
+    //Setters
+    /**
+     * Sets the cleaned status of the station.
+     *
+     * @param setting the cleaned status to set
+     */
+    public void setIsCleaned(boolean setting) {
+        isCleaned = setting;
+    }
+
+    /**
+     * Sets the prepped status of the station.
+     *
+     * @param setting the prepped status to set
+     */
     public void setIsPrepped(boolean setting) {
         isPrepped = setting;
     }
+
 }
