@@ -30,6 +30,11 @@ public class Customer extends Person {
         return order;
     }
 
+    /**
+     * Sets the order for the customer.
+     *
+     * @param order the new order to be placed by the customer
+     */
     public void setOrder(Order order) {
         this.order = order;
     }
