@@ -5,7 +5,7 @@ This project simulates the operations of a drive-through restaurant using a tick
 (Major Class summaries) <br/>
 Main: Serves as the entry point for the drive-through simulation program <br/>
 DriveThrough: Simulates the operations of a drive-through restaurant <br/>
-UI: Handles user (integer) input and output for the drive-through simulation <br/>
+UI: Handles user input and output for the drive-through simulation <br/>
 Employees: Represents an employee that handles customers and moves between different kitchen stations <br/>
 Manager: Represents a manager in a drive-through system that can update the prices of various menu items <br/>
 KitchenStation: Represents a station where employees work, including the name, precedence, and a specific duration of use <br/>
