@@ -19,7 +19,7 @@ public class UI implements Formatting {
     /**
      * Closes the scanner in the UI class.
      */
-    public void closeScanner() { // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    public void closeScanner() {
         scanner.close();
     }
 
@@ -40,7 +40,7 @@ public class UI implements Formatting {
      *
      * @param entries the list of entries to print
      */
-    public void printNumberedList(String[] entries) { // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    public void printNumberedList(String[] entries) {
         for (int i = 0; i < entries.length; i++) {
             System.out.println((i + 1) + ") " + entries[i]);
         }
@@ -76,7 +76,7 @@ public class UI implements Formatting {
      * @return the integer input
      */
 
-    public int integerInput(Integer min, Integer max, String prompt) { // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    public int integerInput(Integer min, Integer max, String prompt) { 
         try {
             printPrompt(prompt);
 
@@ -126,29 +126,27 @@ public class UI implements Formatting {
     }
 
     /**
-     * Gets string input.
+     * Prompts the user for a string input.
+     *
+     * @param prompt the message to prompt the user for input
+     * @return the string input from the user
      */
-    public String stringInput(String prompt) { // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    public String stringInput(String prompt) { 
         printPrompt(prompt);
         return scanner.nextLine();
     }
-    /*
-    public double doubleInput(String prompt) {
-        while (true) {
-            try {
-                printPrompt(prompt);
-                double value = scanner.nextDouble();
-                scanner.nextLine();  // Clear buffer
-                return value;
-            } catch (Exception e) {
-                scanner.nextLine();  // Clear the invalid input
-                System.out.println("Please enter a valid number.");
-            }
-        }
-    }
-        */
 
-    public double doubleInput(Double min, Double max, String prompt) { // COUNTS TOWARDS 5 METHOD REQUIREMENT
+
+    /**
+     * Prompts the user for a double input within a specified range.
+     * If the input is invalid or outside the range, the user is prompted again.
+     *
+     * @param min    the minimum acceptable value 
+     * @param max    the maximum acceptable value 
+     * @param prompt the message to prompt the user for input
+     * @return the valid double input from the user
+     */
+    public double doubleInput(Double min, Double max, String prompt) {
         try {
             printPrompt(prompt);
 
@@ -197,10 +195,22 @@ public class UI implements Formatting {
         }
     }
 
+    //Getters
+    /**
+     * Returns the scanner used for user input
+     *
+     * @return the scanner object
+     */
     public Scanner getScanner() {
         return scanner;
     }
 
+    //Setters
+    /**
+     * Sets the scanner for user input
+     *
+     * @param scanner the scanner object to set
+     */
     public void setScanner(Scanner scanner) {
         this.scanner = scanner;
     }
