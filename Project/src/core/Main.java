@@ -4,7 +4,6 @@ import people.Customer;
 import people.Employee;
 import people.Manager;
 import stations.KitchenStation;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
@@ -104,7 +103,11 @@ public class Main {
         ui.closeScanner();
     }
 
-    public static void printHeader() // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    /**
+     * Prints the header information for the simulation program.
+     * Displays project title and contributor names.
+     */
+    public static void printHeader() 
     {
         System.out.println("CS 151 Project 1: Drive-through Simulation Progr" +
                 "am");
@@ -114,6 +117,10 @@ public class Main {
         ui.printDivider();
     }
 
+    /**
+     * Displays the pause menu during the simulation, allowing the user to manage 
+     * customers and employees while the simulation is paused.
+     */
     public static void pauseMenu() {
         boolean menuActive = true;
 
@@ -171,7 +178,11 @@ public class Main {
         ui.printDivider();
     }
 
-    public static void pricingMenu() // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    /**
+     * Displays the pricing menu that allows the manager to modify item prices in the menu.
+     * The manager can select an item to change its price or skip modifying prices.
+     */
+    public static void pricingMenu() 
     {
         boolean menuActive = true;
 
@@ -227,8 +238,11 @@ public class Main {
         ui.printDivider();
     }
 
-
-    public static void customerMenu() // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    /**
+     * Gathers input for adding customers to the drive-through line.
+     * Prompts the user for the number of customers, their names, and their orders.
+     */
+    public static void customerMenu() 
     {
         int customerCount = ui.integerInput(0, null, "Customer Count (Integer)");
 
@@ -257,7 +271,12 @@ public class Main {
         }
     }
 
-    public static void employeeMenu() // COUNTS TOWARDS 5 METHOD REQUIREMENT
+    /**
+     * Gathers input for adding employees to the drive-through.
+     * Prompts the user for the number of employees and their names, 
+     * assigning them to the ordering station by default.
+     */
+    public static void employeeMenu() 
     {
         int employeeCount = ui.integerInput(0, null, "Employee Count (Integer)");
 
@@ -273,6 +292,10 @@ public class Main {
         }
     }
 
+    /**
+     * Gathers input for setting the manager of the drive-through.
+     * Prompts the user for the manager's name and assigns them to the drive-through.
+     */
     public static void managerMenu() {
         String name = ui.stringInput("Manager's Name (String)");
 
@@ -289,5 +312,4 @@ public class Main {
         bd = bd.setScale(places, RoundingMode.HALF_UP);
         return bd.doubleValue();
     }
-
 }
