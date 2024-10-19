@@ -6,7 +6,6 @@ import people.Manager;
 import stations.KitchenStation;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -145,11 +144,7 @@ public class Main {
             } else if (choice == 2) {
                 ui.printDivider();
                 if (!driveThrough.getOrderingStation().getCustomerQueue().isEmpty()) {
-                    for (int i = 0; i < driveThrough.getOrderingStation().getCustomerQueue().size(); i++) {
-                        System.out.println((i + 1) + ") " + driveThrough.getOrderingStation().getCustomerQueue().get(i).getName() + " (" + driveThrough.getOrderingStation().getCustomerQueue().get(i).getOrder().getName() + ")");
-                    }
-
-                    System.out.println();
+                    viewCustomerInLine();
 
                     int integerInput = ui.integerInput(1, driveThrough.getOrderingStation().getCustomerQueue().size(), "Remove Customer (Integer)");
                     driveThrough.getOrderingStation().getCustomerQueue().remove(integerInput - 1);
@@ -161,11 +156,7 @@ public class Main {
             } else if (choice == 3) {
                 ui.printDivider();
                 if (!driveThrough.getOrderingStation().getCustomerQueue().isEmpty()) {
-                    for (int i = 0; i < driveThrough.getOrderingStation().getCustomerQueue().size(); i++) {
-                        System.out.println((i + 1) + ") " + driveThrough.getOrderingStation().getCustomerQueue().get(i).getName() + " (" + driveThrough.getOrderingStation().getCustomerQueue().get(i).getOrder().getName() + ")");
-                    }
-
-                    System.out.println();
+                    viewCustomerInLine();
                 } else {
                     System.out.println("There are no customers in line.");
                 }
@@ -176,6 +167,14 @@ public class Main {
             }
         }
         ui.printDivider();
+    }
+
+    private static void viewCustomerInLine() {
+        for (int i = 0; i < driveThrough.getOrderingStation().getCustomerQueue().size(); i++) {
+            System.out.println((i + 1) + ") " + driveThrough.getOrderingStation().getCustomerQueue().get(i).getName() + " (" + driveThrough.getOrderingStation().getCustomerQueue().get(i).getOrder().getName() + ")");
+        }
+
+        System.out.println();
     }
 
     /**
@@ -287,7 +286,7 @@ public class Main {
 
             ui.printDivider();
 
-            // All employees start at station 1 (the ordering station)
+            // All employees start at the ordering station
             driveThrough.addEmployee(new Employee(driveThrough, name));
         }
     }
