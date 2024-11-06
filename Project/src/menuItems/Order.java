@@ -1,5 +1,7 @@
 package menuItems;
 
+import core.Payment;
+import java.util.Scanner;
 import java.util.LinkedList;
 
 /**
@@ -24,7 +26,25 @@ public abstract class Order {
         this.price = price;
 
         tasks = new LinkedList<String>();
-    }
+
+
+        }
+
+        public void processOrder() {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.print("Enter payment type (cash/credit): ");
+            String paymentType = scanner.nextLine();
+
+            System.out.print("Enter tip amount (optional): ");
+            double tip = scanner.nextDouble();
+
+            Payment payment = new Payment(paymentType, price);
+            payment.addTip(tip);
+            payment.processPayment();
+        }
+
+
 
     /**
      * Gets the name of the order.
@@ -52,4 +72,7 @@ public abstract class Order {
     public LinkedList<String> getTasks() {
         return tasks;
     }
+
+
+
 }
