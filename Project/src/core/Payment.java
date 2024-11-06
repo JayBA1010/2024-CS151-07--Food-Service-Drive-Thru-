@@ -1,3 +1,4 @@
+package core;
 public class Payment {
     private String paymentType;  // "cash" or "credit"
     private double amount;
